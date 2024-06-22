@@ -37,6 +37,7 @@ c.execute('''CREATE TABLE Pharmacy (
 c.execute('''CREATE TABLE Prescription (
     id INTEGER PRIMARY KEY,
     pat_id INTEGER,
+    doctor_id INTEGER,
     annotation TEXT,
     created_at TIMESTAMP,
     valid_until TIMESTAMP,
