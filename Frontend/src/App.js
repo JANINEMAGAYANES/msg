@@ -4,6 +4,8 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+
+
 import Home from './pages/Home';
 import Scan from './pages/Scan';
 import Calendar from './pages/Calendar';
@@ -12,12 +14,21 @@ import Medication from './pages/Medication';
 import Prescription from './pages/Prescription'
 import BottomNavigationBar from './components/BottomNavigationBar';
 import Chat from './pages/Chat';
+import MedicineInfo from "./components/MedicineInfo";
 import './App.css';
+// import { Outlet, useLoaderData, Link } from "react-router-dom";
+// import { getMedication } from './pages/Medication';
+//
+// export async function loader() {
+//     const medications = await getMedication();
+//     return { medications };
+// }
 
-const App = () => {
+export default function App(){
+    // const { medications } = useLoaderData();
     return (
-        <Router>
             <div>
+                <Router>
                 <AppBar position="static">
                     <Toolbar>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -27,7 +38,7 @@ const App = () => {
                          {/* <Button color="inherit" component={Link} to="/">Home</Button>  */}
                     </Toolbar>
                 </AppBar>
-
+                <Calendar />
                 <Routes>
                     <Route exact path="/" element={<Calendar />} />
                     {/* <Route path="/scan" element={<Scan />} /> */}
@@ -36,11 +47,13 @@ const App = () => {
                     <Route path="/share" element={<Share />} />
                     <Route path="/prescription" element={<Prescription />} />
                     <Route path="/contact" element={<Chat />} />
+                    <Route path='/drug-info' element={<MedicineInfo />} />
                 </Routes>
+                {/*<Outlet />*/}
                 <BottomNavigationBar />
-            </div>
+
         </Router>
+            </div>
     );
 };
 
-export default App;

@@ -5,14 +5,16 @@ import Paper from '@mui/material/Paper';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import InfoIcon from '@mui/icons-material/Info';
+import IconButton from '@mui/material/IconButton';
 
-const timeSlots = [
-  'Diuretica',
-  'Renin Inhibitoren',
-  'Calciumkanalblocker',
-];
 
-const MedicationList = () => {
+export function PrescriptionList(medications) {
+  medications = [
+    'Diuretica',
+    'Renin Inhibitoren',
+    'Calciumkanalblocker',
+  ];
+
   const [checkedItems, setCheckedItems] = useState({});
 
   const handleCheckboxChange = (time) => {
@@ -27,7 +29,7 @@ const MedicationList = () => {
       <Typography variant='h4' gutterBottom>
         Medikamente Überblick
       </Typography>
-      {timeSlots.map((time, index) => (
+      {medications.map((time, index) => (
         <Paper
           key={index}
           sx={{
@@ -39,21 +41,13 @@ const MedicationList = () => {
           }}
           elevation={1}
         >
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={checkedItems[time] || false}
-                onChange={() => handleCheckboxChange(time)}
-                color="primary"
-              />
-            }
-            label={<Typography variant='body1' sx={{ fontSize: '1.5rem' }}>{time}</Typography>}
-          />
-          <InfoIcon color="primary" />
+          <IconButton aria-label="info" color="primary">
+            <InfoIcon />
+          </IconButton>
         </Paper>
       ))}
     </Box>
   );
 };
 
-export default MedicationList;
+export default PrescriptionList;
