@@ -4,7 +4,6 @@ from global_variables import DATABASE_PATH
 
 
 ## Getter functions ##
-
 #################### Patients ####################
 # get patient by id
 def get_patient_by_id(c,  id):
@@ -22,10 +21,12 @@ def get_patients(c):
     return c.fetchall()
 
 #################### Prescription ####################
-# get prescription by patient id
+# get list for prescription ids by patient id 
 def get_prescription_by_patient_id(c, id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
-    return c.fetchall()
+    # return list of integers
+    return list(map(lambda x: x[0], c.fetchall()))
+    
 
 # get all prescription with specific drug
 def get_prescriptions_by_drug_id(c, id):
@@ -35,6 +36,7 @@ def get_prescriptions_by_drug_id(c, id):
     # each prescription is a tuple, so we need to extract the first element
     return list(map(lambda x: x[0], prescriptions))
 
+#################### Drugs ####################
 # get drug by id
 def get_drug_name_by_id(c, id):
     c.execute("SELECT name FROM Drugs WHERE id = ?", (id,))
@@ -50,6 +52,18 @@ def get_drugs(c):
     c.execute("SELECT id FROM Drugs")
     return c.fetchall()
 
+# get side effects of a drug
+def get_side_effects_by_drug_id(c, id):
+    c.execute("SELECT side_effects FROM Drugs WHERE id = ?", (id,))
+    return c.fetchone()
+
+# get alternatives of a drug
+def get_alternatives_by_drug_id(c, id):
+    c.execute("SELECT alternative_drug_id FROM Drugs WHERE id = ?", (id,))
+    return c.fetchone()
+
+#################### Doctor ####################
+
 # get doctor by id
 def get_doctor_by_id(c, id):
     c.execute("SELECT * FROM Doctor WHERE id = ?", (id,))
@@ -59,7 +73,6 @@ def get_doctor_by_id(c, id):
 def get_pharmacy_by_id(c, id):
     c.execute("SELECT * FROM Pharmacy WHERE id = ?", (id,))
     return c.fetchone()
-
 
 
 
