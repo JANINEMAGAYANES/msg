@@ -17,11 +17,11 @@ class Prescription:
         # returns a list of drugs
         drugs = []
         for drug in self.get_drugs(): 
-            drugs.append(access_db.get_drug_name_by_id(drug[0])[0]) 
+            drugs.append(access_db.get_drug_name_by_id(self.c, drug[0])[0]) 
         return drugs
     
     def get_prescription_of_patient(self, pat_id):
-        return access_db.get_prescriptions_by_patient_id(pat_id)
+        return access_db.get_prescriptions_by_patient_id(self.c, pat_id)
             
             
     
