@@ -71,7 +71,8 @@ class Patient:
     # return dict with drug details
     # {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
     def get_drug_detail(self, drug_id):
-        return {'drug_id': drug_id, 'name': access_db.get_drug_name_by_id(self.c, drug_id)[0], 'side_effects': access_db.get_side_effects_by_drug_id(self.c, drug_id), 'alternatives':access_db.get_alternatives_by_drug_id(self.c, drug_id)}
+        price = access_db.get_price_by_drug_id(self.c, drug_id)
+        return {'drug_id': drug_id, 'name': access_db.get_drug_name_by_id(self.c, drug_id)[0], 'side_effects': access_db.get_side_effects_by_drug_id(self.c, drug_id), 'alternatives':access_db.get_alternatives_by_drug_id(self.c, drug_id), 'price': price[0]}
     
     # list: a list of dicts in the following structure
     #[{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
@@ -114,7 +115,7 @@ pat = Patient(1)
 #print(pat.get_list_of_drugs())
 #print(pat.get_drug_overview())
 #print(pat.get_prescriptions_overview())
-#print(pat.get_drug_detail("1"))
+print(pat.get_drug_detail("1"))
 
 print(pat.get_prescription_detail("9"))
         
