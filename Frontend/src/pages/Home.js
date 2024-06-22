@@ -30,58 +30,55 @@ const Home = () => {
     }, []);
     return (
         <>
-        <Box sx={{ p: 4, bgcolor: '#f9f9f9' }}>
-            <Typography variant="h3" component="h3" gutterBottom align="center">
+        <Box sx={{ p: 3, bgcolor: '#f9f9f9' }}>
+            <Typography variant="h4" component="h4" gutterBottom align="center">
                 Rezept #103
             </Typography>
-
-            <Card sx={{ mt: 2, p: 2 }}>
+            <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ArrowDropDownIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{ paddingLeft: '23px' }}
+                    >
+                        <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 'bold' }}>
+                            Ibuprofen
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails sx={{ paddingLeft: '23px', paddingTop: '0px', paddingBottom: '4px' }}>
+                        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                            Menge: [Value]
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                            Einahme: [Value]
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+            <Card sx={{ mt: 2, p: 1.5 }}>
                 <CardContent>
-                    <Accordion defaultExpanded>
-                        <AccordionSummary
-                            expandIcon={<ArrowDropDownIcon />}
-                            aria-controls="panel1-content"
-                            id="panel1-header"
-                        >
-                            <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
-                                IBUPROFEN
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
-                                Menge: [Value]
-                            </Typography>
-                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
-                                Einahme: [Value]
-                            </Typography>
-                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
-                                Dauer: [Value]
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
                         Diagnose: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
                         Arzt: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
-                        Erstellungsdatum: [Value]
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                        Erstellt am: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
                         Gültig bis: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
                         Eingelöst am: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
                         Apotheke: [Value]
                     </Typography>
                 </CardContent>
             </Card>
 
             <Box sx={{ mt: 4, textAlign: 'center' }}>
-                <Button component={Link} to="/share" sx={{ fontSize: '1.25rem', px: 4 }} variant="contained" color="primary">
+                <Button component={Link} to="/share" sx={{ fontSize: '1.25rem', px: 4, marginBottom: 7}} variant="contained" color="primary">
                     Teilen
                 </Button>
             </Box>
