@@ -24,14 +24,14 @@ class Patient_Handler:
         self.c = self.conn.cursor()
     
     def create_patient(self, name, surname):
-        self.c.execute("INSERT INTO patients (name, surname) VALUES (?, ?)", (name, surname))
+        self.c.execute("INSERT INTO Patient (name, surname) VALUES (?, ?)", (name, surname))
         self.conn.commit()
         # get id of the last inserted patient
         self.c.execute("SELECT last_insert_rowid()")
         return self.c.fetchone()[0] 
     
     def get_patient_by_id(self, id):
-        self.c.execute("SELECT * FROM patients WHERE id = ?", (id,))
+        self.c.execute("SELECT * FROM Patient WHERE id = ?", (id,))
         return self.c.fetchone()
             
 pat01 = Patient(1)    
