@@ -20,8 +20,8 @@ class Patient:
             drugs += access_db.get_drugs_by_prescription_id(self.c, pres)
         # remove duplicates
         drugs = list(dict.fromkeys(drugs))
-        
-        return drugs
+        # return list of integer not tuples
+        return list(map(lambda x: x[0], drugs))
     
     
     
@@ -31,9 +31,8 @@ class Patient:
         drugs = self.get_list_of_drugs()
         drug_list = []
         for drug in drugs:
-            print(access_db.get_drug_name_by_id(self.c, drug[0])[0])
-            prescription = access_db.get_prescriptions_by_drug_id(self.c, drug[0])
-            drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug[0])[0], 'drug_id': drug[0], 'prescriptions': prescription})
+            prescription = access_db.get_prescriptions_by_drug_id(self.c, drug)
+            drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug)[0], 'drug_id': drug, 'prescriptions': prescription})
         return drug_list
     
     def get_prescriptions_overview(self):
@@ -82,7 +81,8 @@ pat = Patient(1)
 #print(list(map(lambda x: access_db.get_drug_name_by_id(pat.c, x[0])[0], pat.get_list_of_drugs())))
 
 # test get_drug function endpoints
+print(pat.get_list_of_drugs())
 print(pat.get_drug_overview())
-print(pat.get_prescriptions_overview()) # -> NONE ???
+print(pat.get_prescriptions_overview())
 print(pat.get_drug_detail("1"))
         

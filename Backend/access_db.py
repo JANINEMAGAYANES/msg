@@ -76,8 +76,3 @@ def get_pharmacy_by_id(c, id):
 
 
 
-
-# test get_drugs_by_patient_id function
-conn = sqlite3.connect(DATABASE_PATH)
-c = conn.cursor()
-print(get_prescription_by_patient_id(c, 1))
