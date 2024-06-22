@@ -24,7 +24,7 @@ class Patient:
     
     # get list of all drugs as list of dictionaries with drug name, drug id and prescription id
     #  [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
-    def get_drug(self):
+    def get_drug_overview(self):
         drugs = self.get_list_of_drugs()
         drug_list = []
         for drug in drugs:
@@ -32,7 +32,14 @@ class Patient:
             prescription = access_db.get_prescriptions_by_drug_id(self.c, drug[0])
             drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug[0])[0], 'drug_id': drug[0], 'prescriptions': prescription})
         return drug_list
+    
+    def get_prescriptions_overview(self):
+        access_db.get_prescription_by_patient_id(self.c, self.id)
         
+    # return dict with drug details
+    # {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
+    def get_drug_detail(self, drug_id):
+        return {'drug_id': drug_id, 'name': access_db.get_drug_name_by_id(self.c, drug_id)[0], 'side_effects': access_db.get_side_effects_by_drug_id(self.c, drug_id), 'alternatives':access_db.get_alternatives_by_drug_id(self.c, drug_id)}
     
 class Patient_Handler:
     
@@ -59,5 +66,7 @@ pat = Patient(1)
 #print(list(map(lambda x: access_db.get_drug_name_by_id(pat.c, x[0])[0], pat.get_list_of_drugs())))
 
 # test get_drug function
-print(pat.get_drug())
+print(pat.get_drug_overview())
+print(pat.get_prescriptions_overview())
+print(pat.get_drug_detail(6))
         
