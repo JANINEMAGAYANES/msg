@@ -1,12 +1,11 @@
 from fastapi import FastAPI
-from Patient import Patient 
-import access_db
+from Patient import Patient
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return access_db.get_patient_by_id(1)
+    return {'hello': 'world'}
 
 @app.get("/drug_overview/{patient_id}")
 def read_drug_overview(patient_id: int):
@@ -20,9 +19,7 @@ def read_drug_overview(patient_id: int):
         [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
     """
     patient = Patient(patient_id)
-    print(patient)
-    #return patient.get_list_of_drugs() #patient.get_list_of_drugs()
-    return [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
+    return patient.get_drug()
 
 @app.get("/prescription_overview/{patient_id}")
 def read_prescription_overview(patient_id: int):
