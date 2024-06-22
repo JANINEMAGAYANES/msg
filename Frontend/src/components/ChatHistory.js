@@ -5,7 +5,7 @@ const ChatPage = () => {
     const [messages, setMessages] = useState([
         { sender: 'user', text: 'Hallo, ich brauche ein neues Rezept für Ibuprofen' },
         { sender: 'chatbot', text: 'Haben Sie das Medikament beim letzten Mal gut vertragen? Wie stark sind Ihre Schmerzen?' },
-        { sender: 'user', text: 'Ja, ich hatte keine Nebenwirkungen. In der letzten Tagen hatte ich nur wenig Schmerzen.' },
+        { sender: 'user', text: 'Ja, ich hatte keine Nebenwirkungen. In den letzten Tagen hatte ich nur wenig Schmerzen.' },
         { sender: 'chatbot', text: 'Ich habe Ihnen gerade ein neues Rezept ausgestellt, aber die Dosis verringert. Bei Fragen melden Sie sich gerne jederzeit!' },
     ]);
     const [input, setInput] = useState('');
