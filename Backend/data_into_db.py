@@ -43,32 +43,32 @@ patients = [
 
 # Create a dictionary of demo entries for Doctors
 doctors = [
-    {'first_name': 'Dr. John', 'surname': 'Doe'},
-    {'first_name': 'Dr. Jane', 'surname': 'Doe'},
-    {'first_name': 'Dr. Alice', 'surname': 'Smith'},
-    {'first_name': 'Dr. Bob', 'surname': 'Smith'},
-    {'first_name': 'Dr. Charlie', 'surname': 'Brown'},
-    {'first_name': 'Dr. David', 'surname': 'Brown'},
-    {'first_name': 'Dr. Eve', 'surname': 'Black'},
-    {'first_name': 'Dr. Frank', 'surname': 'Black'},
-    {'first_name': 'Dr. Grace', 'surname': 'White'},
-    {'first_name': 'Dr. Henry', 'surname': 'White'}
+    {'id': 1, 'first_name': 'Dr. John', 'surname': 'Doe'},
+    {'id': 2, 'first_name': 'Dr. Jane', 'surname': 'Doe'},
+    {'id': 3, 'first_name': 'Dr. Alice', 'surname': 'Smith'},
+    {'id': 4, 'first_name': 'Dr. Bob', 'surname': 'Smith'},
+    {'id': 5, 'first_name': 'Dr. Charlie', 'surname': 'Brown'},
+    {'id': 6, 'first_name': 'Dr. David', 'surname': 'Brown'},
+    {'id': 7, 'first_name': 'Dr. Eve', 'surname': 'Black'},
+    {'id': 8, 'first_name': 'Dr. Frank', 'surname': 'Black'},
+    {'id': 9, 'first_name': 'Dr. Grace', 'surname': 'White'},
+    {'id': 10, 'first_name': 'Dr. Henry', 'surname': 'White'}
 ]   
 
 # Create a dictionary of demo entries for Prescriptions id, pat_id, annotation, created_at, valid_until, used, pharm_id
 # without notification, amount and freq
 prescriptions = [
-    {'pat_id': 1, 'annotation': 'Take 1 tablet every 4 hours', 'created_at': '2021-01-01 00:00:00', 'valid_until': '2021-01-02 00:00:00', 'used': 'null', 'pharm_id': 1},
-    {'pat_id': 2, 'annotation': 'Take 1 tablet every 6 hours', 'created_at': '2021-01-02 00:00:00', 'valid_until': '2021-01-03 00:00:00', 'used': 'null', 'pharm_id': 2},
-    {'pat_id': 3, 'annotation': 'Take 1 tablet every 8 hours', 'created_at': '2021-01-03 00:00:00', 'valid_until': '2021-01-04 00:00:00', 'used': 'null', 'pharm_id': 3},
-    {'pat_id': 4, 'annotation': 'Take 1 tablet every 10 hours', 'created_at': '2021-01-04 00:00:00', 'valid_until': '2021-01-05 00:00:00', 'used': 'null', 'pharm_id': 4},
-    {'pat_id': 5, 'annotation': 'Take 1 tablet every 12 hours', 'created_at': '2021-01-05 00:00:00', 'valid_until': '2021-01-06 00:00:00', 'used': 'null', 'pharm_id': 5},
-    {'pat_id': 6, 'annotation': 'Take 1 tablet every 14 hours', 'created_at': '2021-01-06 00:00:00', 'valid_until': '2021-01-07 00:00:00', 'used': 'null', 'pharm_id': 6},
-    {'pat_id': 7, 'annotation': 'Take 1 tablet every 16 hours', 'created_at': '2021-01-07 00:00:00', 'valid_until': '2021-01-08 00:00:00', 'used': 'null', 'pharm_id': 7},
-    {'pat_id': 8, 'annotation': 'Take 1 tablet every 18 hours', 'created_at': '2021-01-08 00:00:00', 'valid_until': '2021-01-09 00:00:00', 'used': 'null', 'pharm_id': 8},
-    {'pat_id': 9, 'annotation': 'Take 1 tablet every 20 hours', 'created_at': '2021-01-09 00:00:00', 'valid_until': '2021-01-10 00:00:00', 'used': 'null', 'pharm_id': 9},
-    {'pat_id': 10, 'annotation': 'Take 1 tablet every 22 hours', 'created_at': '2021-01-10 00:00:00', 'valid_until': '2021-01-11 00:00:00', 'used': 'null', 'pharm_id': 10},
-    {'pat_id': 1, 'annotation': 'Take 1 tablet every 24 hours', 'created_at': '2021-01-11 00:00:00', 'valid_until': '2021-01-12 00:00:00', 'used': 'null', 'pharm_id': 1},
+    {'pat_id': 1,'doctor_id': 1, 'annotation': 'Take 1 tablet every 4 hours', 'created_at': '2021-01-01 00:00:00', 'valid_until': '2021-01-02 00:00:00', 'used': 'null', 'pharm_id': 1},
+    {'pat_id': 2,'doctor_id': 1, 'annotation': 'Take 1 tablet every 6 hours', 'created_at': '2021-01-02 00:00:00', 'valid_until': '2021-01-03 00:00:00', 'used': 'null', 'pharm_id': 2},
+    {'pat_id': 3,'doctor_id': 1, 'annotation': 'Take 1 tablet every 8 hours', 'created_at': '2021-01-03 00:00:00', 'valid_until': '2021-01-04 00:00:00', 'used': 'null', 'pharm_id': 3},
+    {'pat_id': 4,'doctor_id': 1,  'annotation': 'Take 1 tablet every 10 hours', 'created_at': '2021-01-04 00:00:00', 'valid_until': '2021-01-05 00:00:00', 'used': 'null', 'pharm_id': 4},
+    {'pat_id': 5,'doctor_id': 1,  'annotation': 'Take 1 tablet every 12 hours', 'created_at': '2021-01-05 00:00:00', 'valid_until': '2021-01-06 00:00:00', 'used': 'null', 'pharm_id': 5},
+    {'pat_id': 6,'doctor_id': 1,  'annotation': 'Take 1 tablet every 14 hours', 'created_at': '2021-01-06 00:00:00', 'valid_until': '2021-01-07 00:00:00', 'used': 'null', 'pharm_id': 6},
+    {'pat_id': 7,'doctor_id': 1,  'annotation': 'Take 1 tablet every 16 hours', 'created_at': '2021-01-07 00:00:00', 'valid_until': '2021-01-08 00:00:00', 'used': 'null', 'pharm_id': 7},
+    {'pat_id': 8,'doctor_id': 1,  'annotation': 'Take 1 tablet every 18 hours', 'created_at': '2021-01-08 00:00:00', 'valid_until': '2021-01-09 00:00:00', 'used': 'null', 'pharm_id': 8},
+    {'pat_id': 9,'doctor_id': 1,  'annotation': 'Take 1 tablet every 20 hours', 'created_at': '2021-01-09 00:00:00', 'valid_until': '2021-01-10 00:00:00', 'used': 'null', 'pharm_id': 9},
+    {'pat_id': 10,'doctor_id': 1,  'annotation': 'Take 1 tablet every 22 hours', 'created_at': '2021-01-10 00:00:00', 'valid_until': '2021-01-11 00:00:00', 'used': 'null', 'pharm_id': 10},
+    {'pat_id': 1,'doctor_id': 1,  'annotation': 'Take 1 tablet every 24 hours', 'created_at': '2021-01-11 00:00:00', 'valid_until': '2021-01-12 00:00:00', 'used': 'null', 'pharm_id': 1},
 ]
 
     
@@ -173,11 +173,11 @@ for patient in patients:
     
 # Insert the demo entries into the Doctors table
 for doctor in doctors:
-    cursor.execute("INSERT INTO Doctor (first_name, surname) VALUES (?, ?)", (doctor['first_name'], doctor['surname']))
+    cursor.execute("INSERT INTO Doctor (id, first_name, surname) VALUES (?, ?, ?)", (doctor['id'], doctor['first_name'], doctor['surname']))
     
 # Insert the demo entries into the Prescriptions table
 for prescription in prescriptions:
-    cursor.execute("INSERT INTO Prescription (pat_id, annotation, created_at, valid_until, used, pharm_id) VALUES (?, ?, ?, ?, ?, ?)", (prescription['pat_id'], prescription['annotation'], prescription['created_at'], prescription['valid_until'], prescription['used'], prescription['pharm_id']))
+    cursor.execute("INSERT INTO Prescription (pat_id, doctor_id, annotation, created_at, valid_until, used, pharm_id) VALUES (?, ?, ?, ?, ?, ?, ?)", (prescription['pat_id'], prescription['doctor_id'], prescription['annotation'], prescription['created_at'], prescription['valid_until'], prescription['used'], prescription['pharm_id']))
 # Insert the demo entries into the Drugs table
 for drug in drugs:
     cursor.execute("INSERT INTO Drugs (name, side_effects, alternative_drug_id, price) VALUES (?, ?, ?, ?)", (drug['name'], drug['side_effects'], drug['alternative_drug_id'], drug['price']))
