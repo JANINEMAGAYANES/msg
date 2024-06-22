@@ -8,6 +8,7 @@ const Medication = () => {
         return Object.entries(dictionary).filter(([key, item]) => item.hasOwnProperty(attribute));
     }
 
+    // const drugs = [];
     const [medications, setMedications] = useState([]);
 
     useEffect(() => {
@@ -15,6 +16,7 @@ const Medication = () => {
             try {
                 const data = await fetchPrescriptions();
                 const meds = getItemsByCategory(data, 'name' );
+                // const drugs = getItemsByCategory(data, 'drug_id')
                 setMedications(meds); // Update state with fetched medications
             } catch (error) {
                 // Handle error

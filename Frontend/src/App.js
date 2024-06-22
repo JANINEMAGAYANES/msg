@@ -38,7 +38,7 @@ export default function App(){
                         <Button color="inherit" component={Link} to="/">Home</Button>
                     </Toolbar>
                 </AppBar>
-                <Calendar />
+                {/*<Calendar />*/}
                 <Routes>
                     <Route exact path="/" element={<Calendar />} />
                     {/* <Route path="/scan" element={<Scan />} /> */}
