@@ -7,17 +7,17 @@ from global_variables import DATABASE_PATH
 
 #################### Patients ####################
 # get patient by id
-def get_patient_by_id(conn,c,  id):
+def get_patient_by_id(c,  id):
     c.execute("SELECT * FROM Patient WHERE id = ?", (id,))
     return c.fetchone()
 
 # get patient by name & surname
-def get_patient_by_name_surname(conn, name, surname):
+def get_patient_by_name_surname(c, name, surname):
     c.execute("SELECT * FROM Patient WHERE name = ? AND surname = ?", (name, surname))
     return c.fetchone()
 
 # get list of patients
-def get_patients(conn):
+def get_patients(c):
     c.execute("SELECT * FROM Patient")
     return c.fetchall()
 
