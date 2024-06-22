@@ -33,7 +33,7 @@ def read_drug_overview(patient_id: int):
         [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
     """
     patient = Patient(patient_id)
-    return patient.get_drug()
+    return patient.get_drug_overview()
 
 @app.get("/prescription_overview/{patient_id}")
 def read_prescription_overview(patient_id: int):
@@ -48,7 +48,7 @@ def read_prescription_overview(patient_id: int):
     """
     patient = Patient(patient_id)
     patient.get_list_of_drugs()
-    return ['103', '105']
+    return [{'prescription_id': '1243', 'created_at':'2024-06-12'}]
 
 @app.get("/drug/{drug_id}")
 def read_drug(drug_id):
@@ -61,7 +61,8 @@ def read_drug(drug_id):
         dict: a dictionary with the following structure:
         {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
     """
-    return {'drug_id':'1243', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
+    patient = Patient(1)
+    return patient.get_drug_detail()
 
 @app.get("/prescriptions/{prescription_id}")
 def read_prescription(prescription_id):
@@ -72,9 +73,10 @@ def read_prescription(prescription_id):
 
     Returns:
         dict: a dictionary with the following structure
-        {'prescription_id':'103', 'drug_id':'1243', 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+        {'prescription_id':'103', 'drug_ids': ['1243', '1256'], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
     """
-    return {'prescription_id':'103', 'drug_id':'1243', 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+    return {'prescription_id':'103', 'drug_ids': ['1243', '1256'], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+
 @app.get("/todays_medications/{patient_id}")
 def read_todays_medications(patient_id):
     """Get all medications that need to be taken at the current day
@@ -87,19 +89,6 @@ def read_todays_medications(patient_id):
         [{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
         {'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
     """
+    # TODO: better mock
     return [{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
         {'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
-
-@app.post("/change_medication/{patient_id}/{drug_id}")
-async def update_prescription(patient_id, drug_id, data: dict):
-    """_summary_
-
-    Args:
-        patient_id (_type_): _description_
-        drug_id (_type_): _description_
-        data (dict): a dictionary 
-
-    Returns:
-        dict: the posted dict
-    """
-    return data
