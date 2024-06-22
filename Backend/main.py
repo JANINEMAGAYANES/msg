@@ -40,8 +40,25 @@ def read_prescription_overview(patient_id: int):
 
 @app.get("/drug/{drug_id}")
 def read_drug(drug_id):
-    return {"item_id": item_id, "q": q}
+    """Get all information about a drug
+
+    Args:
+        drug_id (_type_): Unique identifier of one drug
+
+    Returns:
+        dict: a dictionary with the following structure:
+        {'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
+    """
+    return {"item_id": drug_id}
 
 @app.get("/prescriptions/{prescription_id}")
 def read_prescription(prescription_id):
+    return {"item_id": item_id, "q": q}
+
+@app.get("/todays_medications/{patient_id}")
+def read_todays_medications(patient_id):
+    return {"item_id": item_id, "q": q}
+
+@app.post("/change_medication/{patient_id}/{drug_id}")
+def update_prescription(patient_id, drug_id):
     return {"item_id": item_id, "q": q}
