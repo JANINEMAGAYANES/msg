@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from Patient import Patient
+from doctor import Doctor
 
 origins = [
     "http://localhost:3000",
@@ -75,7 +76,9 @@ def read_prescription(prescription_id):
         dict: a dictionary with the following structure
         {'prescription_id':'103', 'drug_ids': ['1243', '1256'], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
     """
-    return {'prescription_id':'103', 'drug_ids': ['1243', '1256'], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+    #return {'prescription_id':'103', 'drug_ids': ['1243', '1256'], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+    patient = Patient(1)
+    return patient.get_prescription_detail(prescription_id)
 
 @app.get("/todays_medications/{patient_id}")
 def read_todays_medications(patient_id):
@@ -92,3 +95,8 @@ def read_todays_medications(patient_id):
     # TODO: better mock
     return [{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
         {'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
+    
+@app.post("/new_prescription")
+def create_prescription(data):
+    doctor = Doctor(doctor_id=1)
+    doctor.new_prescription(data.patient_id, data.list_of_drug_id, data.valid_until, data.amount, data.freq, data.annotation)
