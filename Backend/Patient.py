@@ -2,6 +2,7 @@
 import sqlite3  # import sqlite3 module
 import access_db  # import access_db module
 from global_variables import DATABASE_PATH
+import datetime
 
 class Patient:
     def __init__(self, pat_id):
@@ -22,6 +23,8 @@ class Patient:
         
         return drugs
     
+    
+    
     # get list of all drugs as list of dictionaries with drug name, drug id and prescription id
     #  [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
     def get_drug_overview(self):
@@ -41,6 +44,17 @@ class Patient:
     def get_drug_detail(self, drug_id):
         return {'drug_id': drug_id, 'name': access_db.get_drug_name_by_id(self.c, drug_id)[0], 'side_effects': access_db.get_side_effects_by_drug_id(self.c, drug_id), 'alternatives':access_db.get_alternatives_by_drug_id(self.c, drug_id)}
     
+    # list: a list of dicts in the following structure
+    #[{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
+    #{'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
+    def get_todays_medication(self):
+        # get todays date in format YYYY-MM-DD
+        today = datetime.date.today()
+        pass
+        
+        
+        
+    
 class Patient_Handler:
     
     def __init__(self):
@@ -57,6 +71,8 @@ class Patient_Handler:
     def get_patient_by_id(self, id):
         self.c.execute("SELECT * FROM Patient WHERE id = ?", (id,))
         return self.c.fetchone()
+    
+    
             
  ### Test ###
  # get list of drug names of the patient with id 1
@@ -65,8 +81,8 @@ pat = Patient(1)
 # lambada function is used to get the first element of the tuple
 #print(list(map(lambda x: access_db.get_drug_name_by_id(pat.c, x[0])[0], pat.get_list_of_drugs())))
 
-# test get_drug function
+# test get_drug function endpoints
 print(pat.get_drug_overview())
 print(pat.get_prescriptions_overview())
-print(pat.get_drug_detail(6))
+print(pat.get_drug_detail("1"))
         
