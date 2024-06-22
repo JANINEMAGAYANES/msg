@@ -1,10 +1,10 @@
 import React from 'react';
+import TimeSlots from '../components/Timeslots';
 
 const Calendar = () => {
     return (
         <div>
-            <h2>Calendar Page</h2>
-            <p>This is the Calendar page.</p>
+            <TimeSlots/>
         </div>
     );
 };
