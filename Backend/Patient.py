@@ -35,6 +35,7 @@ class Patient_Handler:
         return self.c.fetchone()
             
 pat01 = Patient(1)    
-print(pat01.get_list_of_drugs())
+for drug_id in pat01.get_list_of_drugs():
+    print(access_db.get_drug_by_id(drug_id[0])) # print all drugs of the patient
     
         
