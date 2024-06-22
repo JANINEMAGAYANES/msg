@@ -58,6 +58,7 @@ const TimeSlots = () => {
     localStorage.setItem('timeSlots', JSON.stringify(updatedTimes));
   };
 
+  console.log(prescriptions)
   const handleMedicineChange = (index, newValue) => {
     const updatedTimes = [...timeSlots];
     updatedTimes[index].medicine = newValue;
@@ -158,6 +159,7 @@ const TimeSlots = () => {
           sx={{ fontSize: '1rem', mb: 1 }}
           variant='contained'
           color='primary'
+          style={{ backgroundColor: '#00000' }}
           onClick={handleClickOpen}
         >
           Medikamente Hinzufügen

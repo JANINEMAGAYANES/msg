@@ -13,14 +13,19 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import fetchPrescriptions from '../helpers/fetchPrescription';
 
 const initialRezept = [
-  { rezept: '1543', medicine: 'Ibuprofen' },
-  { rezept: '1434', medicine: 'Insulin' },
+  { rezept: '1543', medicine: 'Ibuprofen', patientId: 1, drugId: 2, annotation: 'Kopfschmerzen', validUntil: '14/02/2025', createdAt: '14/02/2024', amount: '5mg', frequency: '1 pro tag'  },
+  { rezept: '1567', medicine: 'Pennicillin', patientId: 2, drugId: 3, annotation: 'Bauchshmerzen', validUntil: '14/02/2025', createdAt: '14/02/2024', amount: '5mg', frequency: '2 pro tag'  },
+
 ];
 
 const Doctor = () => {
   const [rezeptSlots, setRezeptSlots] = useState(initialRezept);
   const [newRezeptSlot, setNewRezeptSlot] = useState('');
   const [newMedicine, setNewMedicine] = useState('');
+  const [newAnnotation, setNewAnnotation] = useState('');
+  const [newValidUntil, setNewValidUntil] = useState('');
+  const [newAmount, setNewAmount] = useState('');
+  const [newFrequency, setNewFrequency] = useState('');
   const [open, setOpen] = useState(false);
   const [checkedItems, setCheckedItems] = useState({});
   const [prescriptions, setPrescriptions] = useState([]);
@@ -155,6 +160,38 @@ const Doctor = () => {
             fullWidth
             value={newMedicine}
             onChange={(e) => setNewMedicine(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+              <TextField
+            label='Neues Annotation'
+            variant='outlined'
+            fullWidth
+            value={newAnnotation}
+            onChange={(e) => setNewAnnotation(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+                 <TextField
+            label='Gultig bis'
+            variant='outlined'
+            fullWidth
+            value={newValidUntil}
+            onChange={(e) => setNewValidUntil(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+             <TextField
+            label='Menge'
+            variant='outlined'
+            fullWidth
+            value={newAmount}
+            onChange={(e) => setNewAmount(e.target.value)}
+            sx={{ mb: 2 }}
+          />
+                 <TextField
+            label='Häufigkeit'
+            variant='outlined'
+            fullWidth
+            value={newFrequency}
+            onChange={(e) => setNewFrequency(e.target.value)}
             sx={{ mb: 2 }}
           />
         </DialogContent>
