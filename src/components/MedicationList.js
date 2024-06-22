@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import InfoIcon from '@mui/icons-material/Info';
 
 const timeSlots = [
   'Diuretica',
@@ -9,7 +12,16 @@ const timeSlots = [
   'Calciumkanalblocker',
 ];
 
-const MedicationList= () => {
+const MedicationList = () => {
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const handleCheckboxChange = (time) => {
+    setCheckedItems({
+      ...checkedItems,
+      [time]: !checkedItems[time]
+    });
+  };
+
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
@@ -23,29 +35,21 @@ const MedicationList= () => {
             my: 1,
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'space-between', // Align items and place icon at the end
           }}
           elevation={1}
         >
-          <Typography variant='body1' sx={{  fontSize: '1.5rem' }}>{time}</Typography>
-          {(time === '9:00 AM' || time === '12:00 PM') && (
-            <Typography
-              variant='body1'
-              color='text.secondary'
-              sx={{ pl: '100px', fontSize: '1.2rem', fontWeight: 'bold' }}
-            >
-              Namen:
-            </Typography>
-          )}
-
-          {(time === '10:00 AM' || time === '13:00 PM') && (
-            <Typography
-              variant='body1'
-              color='text.secondary'
-              sx={{ pl: '100px', fontSize: '1.2rem', fontWeight: 'bold' }}
-            >
-              Rezept
-            </Typography>
-          )}
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={checkedItems[time] || false}
+                onChange={() => handleCheckboxChange(time)}
+                color="primary"
+              />
+            }
+            label={<Typography variant='body1' sx={{ fontSize: '1.5rem' }}>{time}</Typography>}
+          />
+          <InfoIcon color="primary" />
         </Paper>
       ))}
     </Box>
