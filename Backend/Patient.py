@@ -17,6 +17,9 @@ class Patient:
         drugs = []
         for pres in self.prescriptions:
             drugs += access_db.get_drugs_by_prescription_id(self.c, pres[0])
+        # remove duplicates
+        drugs = list(dict.fromkeys(drugs))
+        
         return drugs
     
     # get list of all drugs as list of dictionaries with drug name, drug id and prescription id
@@ -25,7 +28,9 @@ class Patient:
         drugs = self.get_list_of_drugs()
         drug_list = []
         for drug in drugs:
-            drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug[0])[0], 'drug_id': drug[0], 'prescriptions': access_db.get_prescriptions_by_drug_id(self.c, drug[0])[0]})
+            print(access_db.get_drug_name_by_id(self.c, drug[0])[0])
+            prescription = access_db.get_prescriptions_by_drug_id(self.c, drug[0])
+            drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug[0])[0], 'drug_id': drug[0], 'prescriptions': prescription})
         return drug_list
         
     

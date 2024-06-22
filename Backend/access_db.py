@@ -30,7 +30,11 @@ def get_prescription_by_patient_id(c, id):
 # get all prescription with specific drug
 def get_prescriptions_by_drug_id(c, id):
     c.execute("SELECT prescription_id FROM Drug_in_Prescription WHERE drug_id = ?", (id,))
-    return c.fetchall()
+    prescriptions = c.fetchall()
+    prescriptions = list(dict.fromkeys(prescriptions))
+    # each prescription is a tuple, so we need to extract the first element
+    return list(map(lambda x: x[0], prescriptions))
+
 # get drug by id
 def get_drug_name_by_id(c, id):
     c.execute("SELECT name FROM Drugs WHERE id = ?", (id,))
