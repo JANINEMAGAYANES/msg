@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Home from './pages/Home';
 import Scan from './pages/Scan';
+import Calendar from './pages/Calendar';
 import './App.css';
 
 const App = () => {
@@ -18,13 +19,15 @@ const App = () => {
                             MyApp
                         </Typography>
                         <Button color="inherit" component={Link} to="/">Home</Button>
-                        <Button color="inherit" component={Link} to="/scan">Scan</Button>
+                        {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
+                        <Button color="inherit" component={Link} to="/calendar">Calendar</Button>
                     </Toolbar>
                 </AppBar>
 
                 <Routes>
                     <Route exact path="/" element={<Home />} />
-                    <Route path="/scan" element={<Scan />} />
+                    {/* <Route path="/scan" element={<Scan />} /> */}
+                    <Route path="/calendar" element={<Calendar />} />
                 </Routes>
             </div>
         </Router>
