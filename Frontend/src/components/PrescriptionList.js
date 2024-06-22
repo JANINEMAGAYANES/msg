@@ -10,7 +10,7 @@ const slots = [
   'Rezept 154',
 ];
 
-const MedicationList = () => {
+const PrescriptionList = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
@@ -36,4 +36,4 @@ const MedicationList = () => {
   );
 };
 
-export default MedicationList;
+export default PrescriptionList;
