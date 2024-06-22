@@ -107,8 +107,11 @@ drugs = [
     {'name': 'Tetracycline', 'side_effects': 'Nausea, Vomiting, Diarrhea', 'alternative_drug_id': 28, 'price': '28.50'}
 ]
 # Create a dictionary of demo entries for Drugs_in_Prescription
+# Create demos with multiple drugs in a prescription and with one drug in multiple prescriptions
+
 drugs_in_prescription = [
     {'drug_id': 1, 'prescription_id': 1, 'annotation': 'Take 1 tablet every 4 hours', 'amount': 1, 'freq': '4 hours'},
+    {'drug_id': 3, 'prescription_id': 1, 'annotation': 'Take 1 tablet every 4 hours', 'amount': 1, 'freq': '4 hours'},
     {'drug_id': 2, 'prescription_id': 2, 'annotation': 'Take 1 tablet every 6 hours', 'amount': 1, 'freq': '6 hours'},
     {'drug_id': 3, 'prescription_id': 3, 'annotation': 'Take 1 tablet every 8 hours', 'amount': 1, 'freq': '8 hours'},
     {'drug_id': 4, 'prescription_id': 4, 'annotation': 'Take 1 tablet every 10 hours', 'amount': 1, 'freq': '10 hours'},
@@ -118,23 +121,38 @@ drugs_in_prescription = [
     {'drug_id': 8, 'prescription_id': 8, 'annotation': 'Take 1 tablet every 18 hours', 'amount': 1, 'freq': '18 hours'},
     {'drug_id': 9, 'prescription_id': 9, 'annotation': 'Take 1 tablet every 20 hours', 'amount': 1, 'freq': '20 hours'},
     {'drug_id': 10, 'prescription_id': 10, 'annotation': 'Take 1 tablet every 22 hours', 'amount': 1, 'freq': '22 hours'},
-    {'drug_id': 11, 'prescription_id': 11, 'annotation': 'Take 1 tablet every 24 hours', 'amount': 1, 'freq': '24 hours'},
-    {'drug_id': 12, 'prescription_id': 12, 'annotation': 'Take 1 tablet every 26 hours', 'amount': 1, 'freq': '26 hours'},
-    {'drug_id': 13, 'prescription_id': 13, 'annotation': 'Take 1 tablet every 28 hours', 'amount': 1, 'freq': '28 hours'},
-    {'drug_id': 14, 'prescription_id': 14, 'annotation': 'Take 1 tablet every 30 hours', 'amount': 1, 'freq': '30 hours'},
-    {'drug_id': 15, 'prescription_id': 15, 'annotation': 'Take 1 tablet every 32 hours', 'amount': 1, 'freq': '32 hours'},
-    {'drug_id': 16, 'prescription_id': 16, 'annotation': 'Take 1 tablet every 34 hours', 'amount': 1, 'freq': '34 hours'},
-    {'drug_id': 17, 'prescription_id': 17, 'annotation': 'Take 1 tablet every 36 hours', 'amount': 1, 'freq': '36 hours'},
-    {'drug_id': 18, 'prescription_id': 18, 'annotation': 'Take 1 tablet every 38 hours', 'amount': 1, 'freq': '38 hours'},
-    {'drug_id': 19, 'prescription_id': 19, 'annotation': 'Take 1 tablet every 40 hours', 'amount': 1, 'freq': '40 hours'},
-    {'drug_id': 20, 'prescription_id': 20, 'annotation': 'Take 1 tablet every 42 hours', 'amount': 1, 'freq': '42 hours'},
-    {'drug_id': 21, 'prescription_id': 21, 'annotation': 'Take 1 tablet every 44 hours', 'amount': 1, 'freq': '44 hours'},
-    {'drug_id': 22, 'prescription_id': 22, 'annotation': 'Take 1 tablet every 46 hours', 'amount': 1, 'freq': '46 hours'},
-    {'drug_id': 23, 'prescription_id': 23, 'annotation': 'Take 1 tablet every 48 hours', 'amount': 1, 'freq': '48 hours'},
-    {'drug_id': 24, 'prescription_id': 24, 'annotation': 'Take 1 tablet every 50 hours', 'amount': 1, 'freq': '50 hours'},
-    {'drug_id': 25, 'prescription_id': 25, 'annotation': 'Take 1 tablet every 52 hours', 'amount': 1, 'freq': '52 hours'},
+    {'drug_id': 1, 'prescription_id': 11, 'annotation': 'Take 1 tablet every 24 hours', 'amount': 1, 'freq': '24 hours'},
+    {'drug_id': 2, 'prescription_id': 12, 'annotation': 'Take 1 tablet every 26 hours', 'amount': 1, 'freq': '26 hours'},
+    {'drug_id': 3, 'prescription_id': 13, 'annotation': 'Take 1 tablet every 28 hours', 'amount': 1, 'freq': '28 hours'},
+    {'drug_id': 4, 'prescription_id': 14, 'annotation': 'Take 1 tablet every 30 hours', 'amount': 1, 'freq': '30 hours'},
+    {'drug_id': 2, 'prescription_id': 15, 'annotation': 'Take 1 tablet every 32 hours', 'amount': 1, 'freq': '32 hours'},
+    {'drug_id': 6, 'prescription_id': 16, 'annotation': 'Take 1 tablet every 34 hours', 'amount': 1, 'freq': '34 hours'},
+    {'drug_id': 1, 'prescription_id': 17, 'annotation': 'Take 1 tablet every 36 hours', 'amount': 1, 'freq': '36 hours'},
+    {'drug_id': 8, 'prescription_id': 18, 'annotation': 'Take 1 tablet every 38 hours', 'amount': 1, 'freq': '38 hours'},
+    {'drug_id': 9, 'prescription_id': 19, 'annotation': 'Take 1 tablet every 40 hours', 'amount': 1, 'freq': '40 hours'},
+    {'drug_id': 2, 'prescription_id': 20, 'annotation': 'Take 1 tablet every 42 hours', 'amount': 1, 'freq': '42 hours'},
+    {'drug_id': 1, 'prescription_id': 21, 'annotation': 'Take 1 tablet every 44 hours', 'amount': 1, 'freq': '44 hours'},
+    {'drug_id': 2, 'prescription_id': 22, 'annotation': 'Take 1 tablet every 46 hours', 'amount': 1, 'freq': '46 hours'},
+    {'drug_id': 1, 'prescription_id': 23, 'annotation': 'Take 1 tablet every 48 hours', 'amount': 1, 'freq': '48 hours'},
+    {'drug_id': 2, 'prescription_id': 24, 'annotation': 'Take 1 tablet every 50 hours', 'amount': 1, 'freq': '50 hours'},
+    {'drug_id': 5, 'prescription_id': 25, 'annotation': 'Take 1 tablet every 52 hours', 'amount': 1, 'freq': '52 hours'},
+    {'drug_id': 6, 'prescription_id': 26, 'annotation': 'Take 1 tablet every 54 hours', 'amount': 1, 'freq': '54 hours'},
+    {'drug_id': 7, 'prescription_id': 27, 'annotation': 'Take 1 tablet every 56 hours', 'amount': 1, 'freq': '56 hours'},
+    {'drug_id': 8, 'prescription_id': 28, 'annotation': 'Take 1 tablet every 58 hours', 'amount': 1, 'freq': '58 hours'},
+    {'drug_id': 9, 'prescription_id': 29, 'annotation': 'Take 1 tablet every 60 hours', 'amount': 1, 'freq': '60 hours'},
+    {'drug_id': 3, 'prescription_id': 30, 'annotation': 'Take 1 tablet every 62 hours', 'amount': 1, 'freq': '62 hours'},
+    {'drug_id': 1, 'prescription_id': 2, 'annotation': 'Take 1 tablet every 6 hours', 'amount': 1, 'freq': '6 hours'},
+    {'drug_id': 2, 'prescription_id': 3, 'annotation': 'Take 1 tablet every 8 hours', 'amount': 1, 'freq': '8 hours'},
+    {'drug_id': 3, 'prescription_id': 4, 'annotation': 'Take 1 tablet every 10 hours', 'amount': 1, 'freq': '10 hours'},
+    {'drug_id': 4, 'prescription_id': 5, 'annotation': 'Take 1 tablet every 12 hours', 'amount': 1, 'freq': '12 hours'},
+    {'drug_id': 5, 'prescription_id': 6, 'annotation': 'Take 1 tablet every 14 hours', 'amount': 1, 'freq': '14 hours'},    
+    {'drug_id': 6, 'prescription_id': 7, 'annotation': 'Take 1 tablet every 16 hours', 'amount': 1, 'freq': '16 hours'},
+    {'drug_id': 7, 'prescription_id': 8, 'annotation': 'Take 1 tablet every 18 hours', 'amount': 1, 'freq': '18 hours'},
+    {'drug_id': 8, 'prescription_id': 9, 'annotation': 'Take 1 tablet every 20 hours', 'amount': 1, 'freq': '20 hours'},
+
 ]
 
+    
 # Create a dictionary of demo entries for Pharmacies
 pharmacies = [
     {'name': 'Pharmacy 1'},

@@ -7,48 +7,56 @@ from global_variables import DATABASE_PATH
 
 #################### Patients ####################
 # get patient by id
-def get_patient_by_id(conn,c,  id):
+def get_patient_by_id(c,  id):
     c.execute("SELECT * FROM Patient WHERE id = ?", (id,))
     return c.fetchone()
 
 # get patient by name & surname
-def get_patient_by_name_surname(conn, name, surname):
+def get_patient_by_name_surname(c, name, surname):
     c.execute("SELECT * FROM Patient WHERE name = ? AND surname = ?", (name, surname))
     return c.fetchone()
 
 # get list of patients
-def get_patients(conn):
+def get_patients(c):
     c.execute("SELECT * FROM Patient")
     return c.fetchall()
 
 #################### Prescription ####################
 # get prescription by patient id
-def get_prescription_by_patient_id(conn, c, id):
+def get_prescription_by_patient_id(c, id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
     return c.fetchall()
 
+# get all prescription with specific drug
+def get_prescriptions_by_drug_id(c, id):
+    c.execute("SELECT prescription_id FROM Drug_in_Prescription WHERE drug_id = ?", (id,))
+    prescriptions = c.fetchall()
+    prescriptions = list(dict.fromkeys(prescriptions))
+    # each prescription is a tuple, so we need to extract the first element
+    return list(map(lambda x: x[0], prescriptions))
+
 # get drug by id
-def get_drug_name_by_id(id):
+def get_drug_name_by_id(c, id):
     c.execute("SELECT name FROM Drugs WHERE id = ?", (id,))
     return c.fetchone()
 
 # get drug by prescription id
-def get_drugs_by_prescription_id(conn, c, id):
+def get_drugs_by_prescription_id(c, id):
     c.execute("SELECT drug_id FROM Drug_in_Prescription WHERE prescription_id = ?", (id,))
     return c.fetchall()
 
 # get list of drugs
-def get_drugs(conn):
+def get_drugs(c):
     c.execute("SELECT id FROM Drugs")
     return c.fetchall()
 
 # get doctor by id
-def get_doctor_by_id(conn, id):
+def get_doctor_by_id(c, id):
     c.execute("SELECT * FROM Doctor WHERE id = ?", (id,))
     return c.fetchone()
 
 # get pharmacy by id
-def get_pharmacy_by_id(conn, id):
+def get_pharmacy_by_id(c, id):
     c.execute("SELECT * FROM Pharmacy WHERE id = ?", (id,))
     return c.fetchone()
 
