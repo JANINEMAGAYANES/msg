@@ -42,6 +42,19 @@ def get_drugs(c):
     c.execute("SELECT id FROM Drugs")
     return c.fetchall()
 
+def get_startdatum_by_id(c, drug_id, pres_id):
+    c.execute("SELECT startdatum FROM Drug_in_Prescription WHERE drug_id = ? AND prescription_id = ?", (drug_id, pres_id))
+    return c.fetchone()
+
+def get_freq_by_id(c, drug_id, pres_id):
+    c.execute("SELECT freq FROM Drug_in_Prescription WHERE drug_id = ? AND prescription_id = ?", (drug_id, pres_id))
+    return c.fetchone()
+
+
+
+
+
+
 # get doctor by id
 def get_doctor_by_id(c, id):
     c.execute("SELECT * FROM Doctor WHERE id = ?", (id,))
@@ -53,5 +66,7 @@ def get_pharmacy_by_id(c, id):
     return c.fetchone()
 
 
+
+    
 
 

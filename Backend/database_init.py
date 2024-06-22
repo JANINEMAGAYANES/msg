@@ -26,7 +26,10 @@ c.execute('''CREATE TABLE Drugs (
     name TEXT,
     side_effects TEXT,
     alternative_drug_id INTEGER,
-    price TEXT
+    price TEXT,
+    intervall TEXT
+   
+    
 )''')
 
 c.execute('''CREATE TABLE Pharmacy (
@@ -50,7 +53,8 @@ c.execute('''CREATE TABLE Drug_in_Prescription (
     prescription_id INTEGER,
     annotation TEXT,
     amount INTEGER,
-    freq TEXT
+    freq INTEGER,
+    startdatum TIMESTAMP
 )''')
 
 

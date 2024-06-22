@@ -1,6 +1,7 @@
 # Import
 import sqlite3  # import sqlite3 module
 import access_db  # import access_db module
+import Prescription  # import Prescription module
 from global_variables import DATABASE_PATH
 
 class Patient:
@@ -17,6 +18,17 @@ class Patient:
         for pres in self.prescriptions:
             drugs += access_db.get_drugs_by_prescription_id(self.c, pres[0])
         return drugs
+    
+    # get all drugs of the patient that are to be taken today
+    def get_all_today_drugs(self):
+        drugs = self.get_list_of_drugs()
+        today_drugs = []
+        
+        for drug in drugs:
+            Prescription.Drug_in_Prescription_Handler(drug[0],)
+            if Prescription.Drug_in_Prescription_Handler.if_intervall_is_today(drug[1], drug[2]):
+                today_drugs.append(drug)
+        return today_drugs
     
 class Patient_Handler:
     
@@ -43,4 +55,4 @@ pat = Patient(1)
 print(list(map(lambda x: access_db.get_drug_name_by_id(pat.c, x[0])[0], pat.get_list_of_drugs())))
 
     
-        
+print(pat.get_all_today_drugs())

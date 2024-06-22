@@ -1,6 +1,7 @@
 import sqlite3
 import access_db
 from global_variables import DATABASE_PATH
+from datetime import datetime
 
 class Prescription:
     def __init__(self, pres_id):
@@ -36,6 +37,33 @@ class Prescription_Handler:
         # get id of the last inserted prescription
         self.c.execute("SELECT last_insert_rowid()")
         return Prescription(self.c.fetchone()[0])
+    
+
+class Drug_in_Prescription_Handler:
+    def __init__(self, drug_id ,pres_id):
+        self.conn = sqlite3.connect(DATABASE_PATH)
+        self.c = self.conn.cursor()
+        self.drug_id = drug_id
+        self.pres_id = pres_id
+       
+        self.startdatum = access_db.get_startdatum_by_id(self.c, drug_id,pres_id)[0]    
+        self.freq = access_db.get_freq_by_id(self.c, drug_id,pres_id)[0]
+        
+
+    
+
+    def if_intervall_is_today(freq, startdatum, heute=datetime.now()):
+    # Ensure startdatum is a datetime object
+        if not isinstance(startdatum, datetime):
+            startdatum = datetime.strptime(startdatum, "%Y-%m-%d")
+    
+        # Calculate the difference in days
+        tage_seit_start = (heute - startdatum).days
+    
+    # Check if today is a kreislauf day
+        return tage_seit_start % (freq/24) == 0
+        
+    
     
     
 ### Test ###
