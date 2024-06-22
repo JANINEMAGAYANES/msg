@@ -100,16 +100,14 @@ const TimeSlots = () => {
     return prescription ? prescription.name : '';
   };
 
-  console.log(prescriptions);
-
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
         Einahmeplan
       </Typography>
-      {prescriptions.map((prescription, index) => (
+      {timeSlots.map((slot, index) => (
         <Paper
-          key={prescription.drug_id}
+          key={index}
           sx={{
             p: 2,
             my: 1,
@@ -131,20 +129,20 @@ const TimeSlots = () => {
           <TextField
             variant='standard'
             fullWidth
-            value={timeSlots[index]?.time || ''}
+            value={slot.time}
             onChange={(e) => handleTimeChange(index, e.target.value)}
             InputProps={{
-              style: { fontSize: '1.5rem' },
+              style: { fontSize: '1rem' },
               disableUnderline: true, // Remove bottom border line
             }}
           />
           <TextField
             variant='standard'
             fullWidth
-            value={prescription.name}
-            onChange={(e) => handleTimeChange(index, e.target.value)}
+            value={slot.medicine}
+            onChange={(e) => handleMedicineChange(index, e.target.value)}
             InputProps={{
-              style: { fontSize: '1.5rem' },
+              style: { fontSize: '1rem' },
               disableUnderline: true, // Remove bottom border line
               sx: {
                 width: 'calc(100% + 20px)',
@@ -153,12 +151,11 @@ const TimeSlots = () => {
               },
             }}
           />
-         
         </Paper>
       ))}
       <Box sx={{ mt: 3, textAlign: 'center' }}>
         <Button
-          sx={{ fontSize: '1.5rem', mb: 1 }}
+          sx={{ fontSize: '1rem', mb: 1 }}
           variant='contained'
           color='primary'
           onClick={handleClickOpen}
