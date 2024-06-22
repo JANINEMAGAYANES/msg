@@ -2,7 +2,7 @@
 import sqlite3
 
 # create connection
-conn = sqlite3.connect('msg/Backend/msg.db')
+conn = sqlite3.connect('msg/Backend/backend.db')
 
 # create cursor
 c = conn.cursor()
@@ -28,22 +28,22 @@ def get_patients():
 #################### Prescription ####################
 # get prescription by patient id
 def get_prescription_by_patient_id(id):
-    c.execute("SELECT * FROM prescriptions WHERE patient_id = ?", (id,))
+    c.execute("SELECT id FROM prescriptions WHERE patient_id = ?", (id,))
     return c.fetchall()
 
 # get drug by id
 def get_drug_by_id(id):
-    c.execute("SELECT * FROM drugs WHERE id = ?", (id,))
+    c.execute("SELECT id FROM drugs WHERE id = ?", (id,))
     return c.fetchone()
 
-# get drug by name
-def get_drug_by_name(name):
-    c.execute("SELECT * FROM drugs WHERE name = ?", (name,))
-    return c.fetchone()
+# get drug by prescription id
+def get_drugs_by_prescription_id(id):
+    c.execute("SELECT drug_id FROM drug_in_prescription WHERE prescription_id = ?", (id,))
+    return c.fetchall()
 
 # get list of drugs
 def get_drugs():
-    c.execute("SELECT * FROM drugs")
+    c.execute("SELECT id FROM drugs")
     return c.fetchall()
 
 # get doctor by id
