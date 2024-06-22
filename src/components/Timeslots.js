@@ -4,35 +4,64 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 const timeSlots = [
-    '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM',
-    '12:00 PM', '13:00 PM', '14:00 PM', '15:00 PM', '16:00 PM' , 
-    '17:00 PM',  '18:00 PM',  '19:00 PM',  '20:00 PM',  '21:00 PM'
+  '7:00 AM',
+  '8:00 AM',
+  '9:00 AM',
+  '10:00 AM',
+  '11:00 AM',
+  '12:00 PM',
+  '13:00 PM',
+  '14:00 PM',
+  '15:00 PM',
+  '16:00 PM',
+  '17:00 PM',
+  '18:00 PM',
+  '19:00 PM',
+  '20:00 PM',
+  '21:00 PM',
 ];
 
 const TimeSlots = () => {
-    return (
-        <Box sx={{ p: 3 }}>
-            <Typography variant="h4" gutterBottom>
-                Time Slots
+  return (
+    <Box sx={{ p: 3 }}>
+      <Typography variant='h4' gutterBottom>
+        Time Slots
+      </Typography>
+      {timeSlots.map((time, index) => (
+        <Paper
+          key={index}
+          sx={{
+            p: 2,
+            my: 1,
+            display: 'flex',
+            alignItems: 'center',
+          }}
+          elevation={1}
+        >
+          <Typography variant='body1' sx={{  fontSize: '2.5rem' }}>{time}</Typography>
+          {(time === '9:00 AM' || time === '12:00 PM') && (
+            <Typography
+              variant='body1'
+              color='text.secondary'
+              sx={{ pl: '100px', fontSize: '2.2rem', fontWeight: 'bold' }}
+            >
+              Ibuprofen
             </Typography>
-            {timeSlots.map((time, index) => (
-                <Paper 
-                    key={index} 
-                    sx={{ 
-                        p: 2, 
-                        my: 1, 
-                        display: 'flex', 
-                        alignItems: 'center' 
-                    }}
-                    elevation={1}
-                >
-                    <Typography variant="body1">
-                        {time}
-                    </Typography>
-                </Paper>
-            ))}
-        </Box>
-    );
+          )}
+
+          {(time === '10:00 AM' || time === '13:00 PM') && (
+            <Typography
+              variant='body1'
+              color='text.secondary'
+              sx={{ pl: '100px', fontSize: '2.2rem', fontWeight: 'bold' }}
+            >
+              Insulin
+            </Typography>
+          )}
+        </Paper>
+      ))}
+    </Box>
+  );
 };
 
 export default TimeSlots;

@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Home from './pages/Home';
 import Scan from './pages/Scan';
 import Calendar from './pages/Calendar';
+import Share from './pages/Share';
 import './App.css';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                     <Route exact path="/" element={<Home />} />
                     {/* <Route path="/scan" element={<Scan />} /> */}
                     <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/share" element={<Share />} />
                 </Routes>
             </div>
         </Router>
