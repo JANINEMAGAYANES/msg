@@ -68,7 +68,7 @@ prescriptions = [
     {'pat_id': 8, 'drugs_id': 8, 'annotation': 'Take 1 tablet every 18 hours', 'created_at': '2021-01-08 00:00:00', 'valid_until': '2021-01-09 00:00:00', 'used': 'null', 'pharm_id': 8},
     {'pat_id': 9, 'drugs_id': 9, 'annotation': 'Take 1 tablet every 20 hours', 'created_at': '2021-01-09 00:00:00', 'valid_until': '2021-01-10 00:00:00', 'used': 'null', 'pharm_id': 9},
     {'pat_id': 10, 'drugs_id': 10, 'annotation': 'Take 1 tablet every 22 hours', 'created_at': '2021-01-10 00:00:00', 'valid_until': '2021-01-11 00:00:00', 'used': 'null', 'pharm_id': 10},
-    {'pat_id': 11, 'drugs_id': 11, 'annotation': 'Take 1 tablet every 24 hours', 'created_at': '2021-01-11 00:00:00', 'valid_until': '2021-01-12 00:00:00', 'used': 'null', 'pharm_id': 1},
+    {'pat_id': 1, 'drugs_id': 11, 'annotation': 'Take 1 tablet every 24 hours', 'created_at': '2021-01-11 00:00:00', 'valid_until': '2021-01-12 00:00:00', 'used': 'null', 'pharm_id': 1},
 ]
 
     
