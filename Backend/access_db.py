@@ -1,8 +1,9 @@
 # import
 import sqlite3
+from global_variables import DATABASE_PATH
 
 # create connection
-conn = sqlite3.connect('msg/Backend/backend.db')
+conn = sqlite3.connect(DATABASE_PATH)
 
 # create cursor
 c = conn.cursor()

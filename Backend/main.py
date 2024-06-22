@@ -1,10 +1,13 @@
 from fastapi import FastAPI
+import access_db
 
 app = FastAPI()
 
+example_patient = access_db.get_patient_by_id(1)
+
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return example_patient
 
 @app.get("/prescriptions/{patient_id}")
 def read_prescriptions(patient_id: int):
