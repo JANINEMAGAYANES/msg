@@ -3,12 +3,12 @@ import access_db
 from global_variables import DATABASE_PATH
 
 class Prescription:
-    def __init__(self, pat_id):
+    def __init__(self, pres_id):
         self.conn = sqlite3.connect(DATABASE_PATH)
         self.c = self.conn.cursor()
         # get all prescription ids of the patient
-        self.prescription_ids = self.c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (pat_id,)).fetchall()
-        self.drugs_id = self.c.execute("SELECT drugs_id FROM Prescription WHERE pat_id = ?", (pat_id,)).fetchall()
+        self.pat_id = self.c.execute("SELECT pat_id FROM Prescription WHERE id = ?", (pres_id,)).fetchone()[0]
+        self.drugs_id = self.c.execute("SELECT drug_id FROM Drug_in_Prescription WHERE prescription_id = ?", (pres_id,)).fetchall()
        
     def get_drugs(self): # returns a list of drug_ids
         return self.drugs_id
@@ -36,5 +36,4 @@ class Prescription_Handler:
     
     
 ### Test ###
-for pat_id in range(1, 20):
-    print(Prescription(pat_id).get_drug_name())
+print(Prescription(1).get_drug_name())
