@@ -19,6 +19,7 @@ import MedicineInfo from './components/MedicineInfo';
 import Doctor from './pages/Doctor';
 import Notification from './components/Notification';
 import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import { Outlet, useLoaderData, Link } from "react-router-dom";
 // import { getMedication } from './pages/Medication';
 //
@@ -26,6 +27,17 @@ import './App.css';
 //     const medications = await getMedication();
 //     return { medications };
 // }
+
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#5657ff', // Your custom primary color
+      },
+      secondary: {
+        main: '#dc004e', // Your custom secondary color
+      },
+    },
+  });
 
 export default function App() {
   // const { medications } = useLoaderData();
@@ -42,6 +54,7 @@ export default function App() {
     setOpen(false);
   };
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <Router>
         <AppBar position='static'>
@@ -55,7 +68,7 @@ export default function App() {
               sx={{ flexGrow: 1, textDecoration: 'none', color: 'inherit' }} // Add styles to remove underline and inherit color
           
         >
-              MyApp
+              MediSync
             </Typography>
             {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
             <IconButton color='inherit' component={Link} to='/doctor'>
@@ -84,5 +97,6 @@ export default function App() {
         message="Es ist die zeit um die Ibuprofen nehmen"
         avatarSrc="https://randomuser.me/api/portraits/men/1.jpg" />
     </div>
+    </ThemeProvider>
   );
 }

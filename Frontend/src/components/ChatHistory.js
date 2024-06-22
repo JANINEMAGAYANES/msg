@@ -35,7 +35,7 @@ const ChatPage = () => {
                             p: 2,
                             mb: 2,
                             alignSelf: message.sender === 'user' ? 'flex-end' : 'flex-start',
-                            backgroundColor: message.sender === 'user' ? '#e0f7fa' : '#f1f8e9',
+                            backgroundColor: message.sender === 'user' ? '#e0f7fa' : '#8889ff',
                             maxWidth: '60%',
                             ...(message.sender === 'user' && { marginLeft: 'auto' }),
                         }}

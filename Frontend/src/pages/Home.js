@@ -32,7 +32,7 @@ const Home = () => {
         <>
         <Box sx={{ p: 3, bgcolor: '#f9f9f9' }}>
             <Typography variant="h4" component="h4" gutterBottom align="center">
-                Rezept #103
+                Rezept #134
             </Typography>
             <Accordion>
                     <AccordionSummary
@@ -47,32 +47,52 @@ const Home = () => {
                     </AccordionSummary>
                     <AccordionDetails sx={{ paddingLeft: '23px', paddingTop: '0px', paddingBottom: '4px' }}>
                         <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                            Menge: [Value]
+                            Menge: 30mg
                         </Typography>
                         <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                            Einahme: [Value]
+                            Einahme: 1x wöchentlich
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ArrowDropDownIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                        sx={{ paddingLeft: '23px' }}
+                    >
+                        <Typography variant="body1" color="text.secondary" sx={{ fontWeight: 'bold' }}>
+                            Nystatin
+                        </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails sx={{ paddingLeft: '23px', paddingTop: '0px', paddingBottom: '4px' }}>
+                        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                            Menge: 15mg
+                        </Typography>
+                        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
+                            Einahme: täglich
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
             <Card sx={{ mt: 2, p: 1.5 }}>
                 <CardContent>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Diagnose: [Value]
+                        Diagnose: Pilzinfektion
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Arzt: [Value]
+                        Arzt: Dr. Oppenheimer
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Erstellt am: [Value]
+                        Erstellt am: 2024-06-13
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Gültig bis: [Value]
+                        Gültig bis: 2024-07-13
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Eingelöst am: [Value]
+                        Eingelöst am: 2024-06-15
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 1 }}>
-                        Apotheke: [Value]
+                        Apotheke: Rosenapotheke
                     </Typography>
                 </CardContent>
             </Card>
