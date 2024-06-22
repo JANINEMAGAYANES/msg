@@ -21,7 +21,8 @@ def read_drug_overview(patient_id: int):
     """
     patient = Patient(patient_id)
     print(patient)
-    return patient.get_list_of_drugs() #patient.get_list_of_drugs()
+    #return patient.get_list_of_drugs() #patient.get_list_of_drugs()
+    return [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
 
 @app.get("/prescription_overview/{patient_id}")
 def read_prescription_overview(patient_id: int):
@@ -36,7 +37,7 @@ def read_prescription_overview(patient_id: int):
     """
     patient = Patient(patient_id)
     patient.get_list_of_drugs()
-    return patient.get_list_of_drugs()
+    return ['103', '105']
 
 @app.get("/drug/{drug_id}")
 def read_drug(drug_id):
@@ -47,18 +48,47 @@ def read_drug(drug_id):
 
     Returns:
         dict: a dictionary with the following structure:
-        {'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
+        {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
     """
-    return {"item_id": drug_id}
+    return {'drug_id':'1243', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
 
 @app.get("/prescriptions/{prescription_id}")
 def read_prescription(prescription_id):
-    return {"item_id": item_id, "q": q}
+    """Get details for one prescription
 
+    Args:
+        prescription_id (_type_): _description_
+
+    Returns:
+        dict: a dictionary with the following structure
+        {'prescription_id':'103', 'drug_id':'1243', 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+    """
+    return {'prescription_id':'103', 'drug_id':'1243', 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
 @app.get("/todays_medications/{patient_id}")
 def read_todays_medications(patient_id):
-    return {"item_id": item_id, "q": q}
+    """Get all medications that need to be taken at the current day
+
+    Args:
+        patient_id (_type_): _description_
+
+    Returns:
+        list: a list of dicts in the following structure
+        [{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
+        {'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
+    """
+    return [{'name':'IBUPROFEN', 'drug_id': '1243', 'time':'10:00 AM'},
+        {'name':'PARACETAMOL', 'drug_id': '1244', 'time':'18:00 AM'}]
 
 @app.post("/change_medication/{patient_id}/{drug_id}")
-def update_prescription(patient_id, drug_id):
-    return {"item_id": item_id, "q": q}
+async def update_prescription(patient_id, drug_id, data: dict):
+    """_summary_
+
+    Args:
+        patient_id (_type_): _description_
+        drug_id (_type_): _description_
+        data (dict): a dictionary 
+
+    Returns:
+        dict: the posted dict
+    """
+    return data
