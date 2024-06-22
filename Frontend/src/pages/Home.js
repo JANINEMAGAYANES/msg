@@ -8,6 +8,9 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import fetchPrescriptions from '../helpers/fetchPrescription';
 import BottomNavigationBar from '../components/BottomNavigationBar';
+import Accordion from '@mui/material/Accordion';
+import { AccordionDetails, AccordionSummary } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const Home = () => {
     const [prescriptions, setPrescriptions] = useState([]);
@@ -27,44 +30,58 @@ const Home = () => {
     }, []);
     return (
         <>
-        <Box sx={{ p: 3 }}>
-                <Typography variant="subtitle1" gutterBottom sx={{  fontSize: '1rem',mb: 1 }}>
+        <Box sx={{ p: 4, bgcolor: '#f9f9f9' }}>
+            <Typography variant="h3" component="h3" gutterBottom align="center">
                 Rezept #103
             </Typography>
-            <Divider />
-            <Typography variant="h2" component="h1" gutterBottom>
-            
-                Ibuprofen
-            </Typography>
-            
-            <Card sx={{ mt: 1 }}>
+
+            <Card sx={{ mt: 2, p: 2 }}>
                 <CardContent>
-                    <Typography variant="h5" component="div" sx={{ fontSize: '1.5rem', mb: 1 }}>
-                        Name: Ibuprofen
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{  fontSize: '1.5rem',mb: 1 }}>
-                        Einahme: [Value]
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.5rem', mb: 1 }}>
-                        Menge: [Value]
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.5rem', mb: 1 }}>
-                        Nebenwirkungen: [Value]
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{  fontSize: '1.5rem',mb: 1 }}>
+                    <Accordion defaultExpanded>
+                        <AccordionSummary
+                            expandIcon={<ArrowDropDownIcon />}
+                            aria-controls="panel1-content"
+                            id="panel1-header"
+                        >
+                            <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                                IBUPROFEN
+                            </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                                Menge: [Value]
+                            </Typography>
+                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                                Einahme: [Value]
+                            </Typography>
+                            <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                                Dauer: [Value]
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
                         Diagnose: [Value]
                     </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{  fontSize: '1.5rem',mb: 1 }}>
-                        Dauer: [Value]
-                    </Typography>
-                    <Typography variant="body1" color="text.secondary" sx={{  fontSize: '1.5rem',mb: 1 }}>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
                         Arzt: [Value]
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                        Erstellungsdatum: [Value]
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                        Gültig bis: [Value]
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                        Eingelöst am: [Value]
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.25rem', mb: 2 }}>
+                        Apotheke: [Value]
                     </Typography>
                 </CardContent>
             </Card>
 
-            <Box sx={{ mt: 3, textAlign: 'center' }}>
-                <Button component={Link} to="/share" sx={{  fontSize: '1.5rem',mb: 1 }} variant="contained" color="primary">
+            <Box sx={{ mt: 4, textAlign: 'center' }}>
+                <Button component={Link} to="/share" sx={{ fontSize: '1.25rem', px: 4 }} variant="contained" color="primary">
                     Teilen
                 </Button>
             </Box>
