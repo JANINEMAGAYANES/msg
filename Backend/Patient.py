@@ -23,6 +23,14 @@ class Patient:
         # return list of integer not tuples
         return list(map(lambda x: x[0], drugs))
     
+    # delete prescription by id
+    def delete_prescription(self, prescription_id):
+        self.c.execute("DELETE FROM Prescription WHERE id = ?", (prescription_id,))
+        # delete regarding entries in drug_in_prescription
+        self.c.execute("DELETE FROM Drug_in_Prescription WHERE prescription_id = ?", (prescription_id,))
+        self.conn.commit()
+    
+    
     
     
     # get list of all drugs as list of dictionaries with drug name, drug id and prescription id
