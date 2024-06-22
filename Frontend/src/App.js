@@ -4,6 +4,9 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import IconButton from '@mui/material/IconButton';
+
 
 
 import Home from './pages/Home';
@@ -15,6 +18,7 @@ import Prescription from './pages/Prescription'
 import BottomNavigationBar from './components/BottomNavigationBar';
 import Chat from './pages/Chat';
 import MedicineInfo from "./components/MedicineInfo";
+import Doctor from "./pages/Doctor"
 import './App.css';
 // import { Outlet, useLoaderData, Link } from "react-router-dom";
 // import { getMedication } from './pages/Medication';
@@ -35,7 +39,9 @@ export default function App(){
                             MyApp
                         </Typography>
                         {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
-                         {/* <Button color="inherit" component={Link} to="/">Home</Button>  */}
+                        <IconButton color="inherit" component={Link} to="/doctor">
+      <LocalHospitalIcon />
+    </IconButton>
                     </Toolbar>
                 </AppBar>
                 {/*<Calendar />*/}
@@ -48,6 +54,7 @@ export default function App(){
                     <Route path="/prescription" element={<Prescription />} />
                     <Route path="/contact" element={<Chat />} />
                     <Route path='/drug-info' element={<MedicineInfo />} />
+                    <Route path='/doctor' element={<Doctor />} />
                 </Routes>
                 {/*<Outlet />*/}
                 <BottomNavigationBar />
