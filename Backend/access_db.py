@@ -12,7 +12,7 @@ def get_patient_by_id(c,  id):
 
 # get patient by name & surname
 def get_patient_by_name_surname(c, name, surname):
-    c.execute("SELECT * FROM Patient WHERE name = ? AND surname = ?", (name, surname))
+    c.execute("SELECT id FROM Patient WHERE first_name = ? AND surname = ?", (name, surname))
     return c.fetchone()
 
 # get list of patients
@@ -21,6 +21,10 @@ def get_patients(c):
     return c.fetchall()
 
 #################### Prescription ####################
+# get prescription by id
+def get_prescription_by_id(c, id):
+    c.execute("SELECT * FROM Prescription WHERE id = ?", (id,))
+    return c.fetchone()
 # get list for prescription ids by patient id 
 def get_prescription_by_patient_id(c, id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
