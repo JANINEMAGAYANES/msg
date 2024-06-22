@@ -12,57 +12,32 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import fetchPrescriptions from '../helpers/fetchPrescription';
 
-const initialTimeSlots = [
-  { time: '9:00', medicine: 'Ibuprofen' },
-  { time: '10:00', medicine: 'Insulin' },
-  { time: '11:00', medicine: '' },
-  { time: '12:00', medicine: 'Ibuprofen' },
-  { time: '13:00', medicine: 'Insulin' },
-  { time: '14:00', medicine: '' },
-  { time: '15:00', medicine: '' },
+const initialRezept = [
+  { rezept: '1543', medicine: 'Ibuprofen' },
+  { rezept: '1434', medicine: 'Insulin' },
 ];
 
-const TimeSlots = () => {
-  const [timeSlots, setTimeSlots] = useState([]);
-  const [newTimeSlot, setNewTimeSlot] = useState('');
+const Doctor = () => {
+  const [rezeptSlots, setRezeptSlots] = useState(initialRezept);
+  const [newRezeptSlot, setNewRezeptSlot] = useState('');
   const [newMedicine, setNewMedicine] = useState('');
   const [open, setOpen] = useState(false);
   const [checkedItems, setCheckedItems] = useState({});
   const [prescriptions, setPrescriptions] = useState([]);
 
-  useEffect(() => {
-    const fetchPrescriptionsData = async () => {
-      try {
-        const data = await fetchPrescriptions();
-        setPrescriptions(data); // Update state with fetched prescriptions
-
-        // After fetching prescriptions, update the time slots
-        const storedTimeSlots = JSON.parse(localStorage.getItem('timeSlots'));
-        if (storedTimeSlots) {
-          setTimeSlots(storedTimeSlots);
-        } else {
-          setTimeSlots(initialTimeSlots);
-        }
-      } catch (error) {
-        console.error('Error fetching prescriptions:', error);
-      }
-    };
-
-    fetchPrescriptionsData();
-  }, []);
-
-  const handleTimeChange = (index, newValue) => {
-    const updatedTimes = [...timeSlots];
-    updatedTimes[index].time = newValue;
-    setTimeSlots(updatedTimes);
-    localStorage.setItem('timeSlots', JSON.stringify(updatedTimes));
+  
+  const handleRezeptChange = (index, newValue) => {
+    const updatedRezepts = [...rezeptSlots];
+    updatedRezepts[index].rezept = newValue;
+    setRezeptSlots(updatedRezepts);
+    localStorage.setItem('rezeptSlots', JSON.stringify(updatedRezepts));
   };
 
   const handleMedicineChange = (index, newValue) => {
-    const updatedTimes = [...timeSlots];
-    updatedTimes[index].medicine = newValue;
-    setTimeSlots(updatedTimes);
-    localStorage.setItem('timeSlots', JSON.stringify(updatedTimes));
+    const updatedRezepts = [...rezeptSlots];
+    updatedRezepts[index].medicine = newValue;
+    setRezeptSlots(updatedRezepts);
+    localStorage.setItem('rezeptSlots', JSON.stringify(updatedRezepts));
   };
 
   const handleCheckboxChange = (index) => {
@@ -81,31 +56,30 @@ const TimeSlots = () => {
     setOpen(false);
   };
 
-  const handleAddTimeSlot = () => {
-    if (newTimeSlot && newMedicine) {
-      const updatedTimes = [
-        ...timeSlots,
-        { time: newTimeSlot, medicine: newMedicine },
+  const handleAddRezeptSlot = () => {
+    if (newRezeptSlot && newMedicine) {
+      const updatedRezepts = [
+        ...rezeptSlots,
+        { rezept: newRezeptSlot, medicine: newMedicine },
       ];
-      setTimeSlots(updatedTimes);
-      localStorage.setItem('timeSlots', JSON.stringify(updatedTimes));
-      setNewTimeSlot('');
+      setRezeptSlots(updatedRezepts);
+      localStorage.setItem('rezeptSlots', JSON.stringify(updatedRezepts));
+      setNewRezeptSlot('');
       setNewMedicine('');
       handleClose();
     }
   };
 
-  const getPrescriptionName = (drugId) => {
-    const prescription = prescriptions.find((pres) => pres.drug_id === drugId);
-    return prescription ? prescription.name : '';
-  };
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant='h4' gutterBottom>
-        Einahmeplan
+           <Typography variant='h5' gutterBottom>
+       Patient
       </Typography>
-      {timeSlots.map((slot, index) => (
+      <Typography variant='h4' gutterBottom>
+        John Mauer
+      </Typography>
+      {rezeptSlots.map((slot, index) => (
         <Paper
           key={index}
           sx={{
@@ -129,8 +103,8 @@ const TimeSlots = () => {
           <TextField
             variant='standard'
             fullWidth
-            value={slot.time}
-            onChange={(e) => handleTimeChange(index, e.target.value)}
+            value={slot.rezept}
+            onChange={(e) => handleRezeptChange(index, e.target.value)}
             InputProps={{
               style: { fontSize: '1rem' },
               disableUnderline: true, // Remove bottom border line
@@ -140,7 +114,7 @@ const TimeSlots = () => {
             variant='standard'
             fullWidth
             value={slot.medicine}
-            onChange={(e) => handleMedicineChange(index, e.target.value)}
+            onChange={(e) => handleRezeptChange(index, e.target.value)}
             InputProps={{
               style: { fontSize: '1rem' },
               disableUnderline: true, // Remove bottom border line
@@ -160,19 +134,19 @@ const TimeSlots = () => {
           color='primary'
           onClick={handleClickOpen}
         >
-          Medikamente Hinzufügen
+          Rezept Hinzufügen
         </Button>
       </Box>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Neuen Zeitplatz hinzufügen</DialogTitle>
+        <DialogTitle>Neuen Rezept hinzufügen</DialogTitle>
         <DialogContent>
           <TextField
-            label='Neuer Zeitplatz'
+            label='Neuer Rezept'
             variant='outlined'
             fullWidth
-            value={newTimeSlot}
-            onChange={(e) => setNewTimeSlot(e.target.value)}
+            value={newRezeptSlot}
+            onChange={(e) => setNewRezeptSlot(e.target.value)}
             sx={{ mb: 2 }}
           />
           <TextField
@@ -188,7 +162,7 @@ const TimeSlots = () => {
           <Button onClick={handleClose} color='primary'>
             Abbrechen
           </Button>
-          <Button onClick={handleAddTimeSlot} color='primary'>
+          <Button onClick={handleAddRezeptSlot} color='primary'>
             Hinzufügen
           </Button>
         </DialogActions>
@@ -197,4 +171,4 @@ const TimeSlots = () => {
   );
 };
 
-export default TimeSlots;
+export default Doctor;

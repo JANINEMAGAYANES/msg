@@ -50,7 +50,7 @@ const ChatPage = () => {
                     e.preventDefault();
                     handleSendMessage();
                 }}
-                sx={{ display: 'flex', alignItems: 'center' }}
+                sx={{ display: 'flex', alignItems: 'center', paddingBottom: '50px'}}
             >
                 <TextField
                     fullWidth
