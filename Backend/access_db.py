@@ -21,10 +21,12 @@ def get_patients(c):
     return c.fetchall()
 
 #################### Prescription ####################
-# get prescription id by patient id
+# get list for prescription ids by patient id 
 def get_prescription_by_patient_id(c, id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
-    return c.fetchall() # is none if no prescription is found
+    # return list of integers
+    return list(map(lambda x: x[0], c.fetchall()))
+    
 
 # get all prescription with specific drug
 def get_prescriptions_by_drug_id(c, id):
@@ -75,3 +77,7 @@ def get_pharmacy_by_id(c, id):
 
 
 
+# test get_drugs_by_patient_id function
+conn = sqlite3.connect(DATABASE_PATH)
+c = conn.cursor()
+print(get_prescription_by_patient_id(c, 1))

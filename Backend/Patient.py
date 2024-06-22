@@ -17,7 +17,7 @@ class Patient:
     def get_list_of_drugs(self):
         drugs = []
         for pres in self.prescriptions:
-            drugs += access_db.get_drugs_by_prescription_id(self.c, pres[0])
+            drugs += access_db.get_drugs_by_prescription_id(self.c, pres)
         # remove duplicates
         drugs = list(dict.fromkeys(drugs))
         
@@ -37,7 +37,7 @@ class Patient:
         return drug_list
     
     def get_prescriptions_overview(self):
-        access_db.get_prescription_by_patient_id(self.c, self.id)
+        return access_db.get_prescription_by_patient_id(self.c, self.id)
         
     # return dict with drug details
     # {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
@@ -83,6 +83,6 @@ pat = Patient(1)
 
 # test get_drug function endpoints
 print(pat.get_drug_overview())
-print(pat.get_prescriptions_overview())
+print(pat.get_prescriptions_overview()) # -> NONE ???
 print(pat.get_drug_detail("1"))
         
