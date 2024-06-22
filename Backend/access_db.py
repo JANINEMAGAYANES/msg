@@ -28,7 +28,7 @@ def get_patients():
 
 #################### Prescription ####################
 # get prescription by patient id
-def get_prescription_by_patient_id(id):
+def get_prescriptions_by_patient_id(id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
     return c.fetchall()
 
