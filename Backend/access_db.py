@@ -33,7 +33,7 @@ def get_prescription_by_patient_id(id):
     return c.fetchall()
 
 # get drug by id
-def get_drug_by_id(id):
+def get_drug_name_by_id(id):
     c.execute("SELECT name FROM Drugs WHERE id = ?", (id,))
     return c.fetchone()
 
