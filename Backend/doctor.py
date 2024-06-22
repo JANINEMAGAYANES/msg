@@ -15,7 +15,7 @@ class Doctor:
         patient = Patient.Patient(patient_id)
         return patient
     
-    def new_precription(self, patient_id, list_of_drug_id, valid_until, amount, freq, annotation):
+    def new_prescription(self, patient_id, list_of_drug_id, valid_until, amount, freq, annotation):
         # today's date
         today = datetime.date.today()
         
@@ -31,11 +31,11 @@ class Doctor:
         self.conn.commit()
         return prescription_id
         
-    
+    # edit prescription
         
 # test
 doctor = Doctor()
 print(doctor.get_patient("Bob", "Doe"))
-id = doctor.new_precription(1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "2022-01-01", 2, "1-0-1", "Take with food")
+id = doctor.new_prescription(1, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "2022-01-01", 2, "1-0-1", "Take with food")
 print(access_db.get_prescription_by_id(doctor.c, id))
         

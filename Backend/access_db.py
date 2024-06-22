@@ -40,6 +40,11 @@ def get_prescriptions_by_drug_id(c, id):
     # each prescription is a tuple, so we need to extract the first element
     return list(map(lambda x: x[0], prescriptions))
 
+# get date of creation of a prescription by id not as tuple
+def get_created_at_by_prescription_id(c, id):
+    c.execute("SELECT created_at FROM Prescription WHERE id = ?", (id,))
+    return c.fetchone()[0]
+
 #################### Drugs ####################
 # get drug by id
 def get_drug_name_by_id(c, id):

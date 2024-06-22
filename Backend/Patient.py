@@ -23,7 +23,7 @@ class Patient:
         # return list of integer not tuples
         return list(map(lambda x: x[0], drugs))
     
-    # delete prescription by id
+    # delete prescription by id , only if pat id matches
     def delete_prescription(self, prescription_id):
         self.c.execute("DELETE FROM Prescription WHERE id = ?", (prescription_id,))
         # delete regarding entries in drug_in_prescription
@@ -43,8 +43,15 @@ class Patient:
             drug_list.append({'name': access_db.get_drug_name_by_id(self.c, drug)[0], 'drug_id': drug, 'prescriptions': prescription})
         return drug_list
     
+    # get prescription detail by prescription id
+    # {'prescription_id':'103', 'drug_ids':['1243', ], 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
+   
+    # get all prescriptions of the patient as list of dictionaries with date of creation
     def get_prescriptions_overview(self):
-        return access_db.get_prescription_by_patient_id(self.c, self.id)
+        prescription_list = []
+        for pres in self.prescriptions:
+            prescription_list.append({'prescription_id': pres, 'created_at': access_db.get_created_at_by_prescription_id(self.c, pres)})
+        return prescription_list
         
     # return dict with drug details
     # {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
@@ -89,8 +96,8 @@ pat = Patient(1)
 #print(list(map(lambda x: access_db.get_drug_name_by_id(pat.c, x[0])[0], pat.get_list_of_drugs())))
 
 # test get_drug function endpoints
-print(pat.get_list_of_drugs())
-print(pat.get_drug_overview())
+#print(pat.get_list_of_drugs())
+#print(pat.get_drug_overview())
 print(pat.get_prescriptions_overview())
-print(pat.get_drug_detail("1"))
+#print(pat.get_drug_detail("1"))
         
