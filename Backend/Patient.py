@@ -30,9 +30,6 @@ class Patient:
         self.c.execute("DELETE FROM Drug_in_Prescription WHERE prescription_id = ?", (prescription_id,))
         self.conn.commit()
     
-    
-    
-    
     # get list of all drugs as list of dictionaries with drug name, drug id and prescription id
     #  [{'name': 'IBUPROFEN', 'drug_id': '1243', 'prescriptions': ['103', '105']}]
     def get_drug_overview(self):
@@ -47,12 +44,6 @@ class Patient:
     # {'prescription_id':'103', 'drug_ids':['1243', ], 'doctor_id': '1', 'annotation':'headache', 'created_at':'2024-06-22', 'valid_until':'2024-07-22', 'used': '2024-06-24', 'pharm_id': '17263'}
     def get_prescription_detail(self, prescription_id):
         details = access_db.get_prescription_detail(self.c, prescription_id)
-        doctor_id = details[2]
-        annotation = details[3]
-        created_at = details[4]
-        valid_until = details[5]
-        used = details[6]
-        pharm_id = details[7]
         drug_ids = access_db.get_drugs_by_prescription_id(self.c, prescription_id)
         
         for drug in drug_ids:
@@ -68,7 +59,7 @@ class Patient:
             drug_info = {'drug_id': drug[0], 'name': drug_name[0], 'amount': drug_amount, 'frequency': drug_frequency}  
       
         
-        return {'prescription_id': prescription_id, 'drug': drug_info, 'doctor_id': doctor_id, 'annotation': annotation, 'created_at': created_at, 'valid_until': valid_until, 'used': used, 'pharm_id': pharm_id}
+        return {'prescription_id': prescription_id, 'drug': drug_info, 'doctor_id': details[2], 'annotation': details[3], 'created_at': details[4], 'valid_until': details[5], 'used': details[6], 'pharm_id': details[7]}
         
     # get all prescriptions of the patient as list of dictionaries with date of creation
     def get_prescriptions_overview(self):
