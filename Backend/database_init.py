@@ -1,59 +1,6 @@
 
 from global_variables import DATABASE_PATH# Create a SQLite DB and tables for the backend based on the following DBML schema:
 
-"""
-Table Patient {
-  id integer [primary key]
-  first_name string
-  surname string
-}
-
-Table Doctor {
-  id integer [primary key]
-  first_name string
-  surname string
-}
-
-Table Prescription {
-  id integer [primary key]
-  pat_id integer
-  drugs_id varchar
-  annotation string
-  created_at timestamp
-  valid_until timestamp
-  used timestamp
-  pharm_id integer
-}
-
-Table Drugs {
-  id integer [primary key]
-  name string
-  side_effects string
-  alternative_drug_id int
-  price string
-}
-Table Drug_in_Prescription{
-  con integer [primary key]
-  drug_id integer
-  prescripition_id integer
-  annotation string
-  amount integer
-  freq string
-  notification dict
-}
-Table Pharmacy {
-  id integer [primary key]
-  name string
-}
-
-Ref: Patient.id < Prescription.id // many-to-one
-Ref: Prescription.id < Drug_in_Prescription.con
-Ref: Drug_in_Prescription.con > Drugs.id
-Ref: Doctor.id < Prescription.id
-Ref: Pharmacy.id < Prescription.id
-"""
-
-
 # Importing the required libraries
 import sqlite3
 
@@ -90,7 +37,6 @@ c.execute('''CREATE TABLE Pharmacy (
 c.execute('''CREATE TABLE Prescription (
     id INTEGER PRIMARY KEY,
     pat_id INTEGER,
-    drugs_id TEXT,
     annotation TEXT,
     created_at TIMESTAMP,
     valid_until TIMESTAMP,
