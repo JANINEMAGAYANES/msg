@@ -1,4 +1,6 @@
-# Create a SQLite DB and tables for the backend based on the following DBML schema:
+
+from global_variables import DATABASE_PATH# Create a SQLite DB and tables for the backend based on the following DBML schema:
+
 """
 Table Patient {
   id integer [primary key]
@@ -56,7 +58,7 @@ Ref: Pharmacy.id < Prescription.id
 import sqlite3
 
 # Create a connection to the SQLite DB im current Folder Backend
-conn = sqlite3.connect('msg/Backend/backend.db')
+conn = sqlite3.connect(DATABASE_PATH)
 c = conn.cursor()	
 
 # Create the tables

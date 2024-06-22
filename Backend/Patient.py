@@ -1,10 +1,11 @@
 # Import
 import sqlite3  # import sqlite3 module
 import access_db  # import access_db module
+from global_variables import DATABASE_PATH
 
 class Patient:
     def __init__(self, pat_id):
-        self.conn = sqlite3.connect('msg/Backend/backend.db')
+        self.conn = sqlite3.connect(DATABASE_PATH)
         self.c = self.conn.cursor()
         self.name = access_db.get_patient_by_id(pat_id)[1]
         self.surname = access_db.get_patient_by_id(pat_id)[2]
@@ -20,7 +21,7 @@ class Patient:
 class Patient_Handler:
     
     def __init__(self):
-        self.conn = sqlite3.connect('msg/Backend/backend.db')
+        self.conn = sqlite3.connect(DATABASE_PATH)
         self.c = self.conn.cursor()
     
     def create_patient(self, name, surname):
