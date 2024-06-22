@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://api.thecatapi.com/v1/images/0XYvRd7oD'; 
+const API_URL = ''; 
 
 const fetchPrescriptions = async () => {
     try {
