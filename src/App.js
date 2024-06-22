@@ -8,6 +8,10 @@ import Home from './pages/Home';
 import Scan from './pages/Scan';
 import Calendar from './pages/Calendar';
 import Share from './pages/Share';
+import Medication from './pages/Medication';
+import Prescription from './pages/Prescription'
+import BottomNavigationBar from './components/BottomNavigationBar';
+import Chat from './pages/Chat';
 import './App.css';
 
 const App = () => {
@@ -19,18 +23,21 @@ const App = () => {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             MyApp
                         </Typography>
-                        <Button color="inherit" component={Link} to="/">Home</Button>
                         {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
-                        <Button color="inherit" component={Link} to="/calendar">Calendar</Button>
+                        <Button color="inherit" component={Link} to="/">Home</Button>
                     </Toolbar>
                 </AppBar>
 
                 <Routes>
-                    <Route exact path="/" element={<Home />} />
+                    <Route exact path="/" element={<Calendar />} />
                     {/* <Route path="/scan" element={<Scan />} /> */}
-                    <Route path="/calendar" element={<Calendar />} />
+                    <Route path="/ubernehmen" element={<Home />} />
+                    <Route path="/medication" element={<Medication />} />
                     <Route path="/share" element={<Share />} />
+                    <Route path="/prescription" element={<Prescription />} />
+                    <Route path="/contact" element={<Chat />} />
                 </Routes>
+                <BottomNavigationBar />
             </div>
         </Router>
     );

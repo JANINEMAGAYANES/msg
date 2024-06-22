@@ -4,28 +4,16 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 const timeSlots = [
-  '7:00 AM',
-  '8:00 AM',
-  '9:00 AM',
-  '10:00 AM',
-  '11:00 AM',
-  '12:00 PM',
-  '13:00 PM',
-  '14:00 PM',
-  '15:00 PM',
-  '16:00 PM',
-  '17:00 PM',
-  '18:00 PM',
-  '19:00 PM',
-  '20:00 PM',
-  '21:00 PM',
+  'Diuretica',
+  'Renin Inhibitoren',
+  'Calciumkanalblocker',
 ];
 
-const TimeSlots = () => {
+const MedicationList= () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
-        Time Slots
+        Medikamente Überblick
       </Typography>
       {timeSlots.map((time, index) => (
         <Paper
@@ -45,7 +33,7 @@ const TimeSlots = () => {
               color='text.secondary'
               sx={{ pl: '100px', fontSize: '1.2rem', fontWeight: 'bold' }}
             >
-              Ibuprofen
+              Namen:
             </Typography>
           )}
 
@@ -55,7 +43,7 @@ const TimeSlots = () => {
               color='text.secondary'
               sx={{ pl: '100px', fontSize: '1.2rem', fontWeight: 'bold' }}
             >
-              Insulin
+              Rezept
             </Typography>
           )}
         </Paper>
@@ -64,4 +52,4 @@ const TimeSlots = () => {
   );
 };
 
-export default TimeSlots;
+export default MedicationList;
