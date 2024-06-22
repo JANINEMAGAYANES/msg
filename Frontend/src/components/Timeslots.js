@@ -153,7 +153,7 @@ const TimeSlots = () => {
           />
         </Paper>
       ))}
-      <Box sx={{ mt: 3, textAlign: 'center' }}>
+      <Box sx={{ mt: 3, textAlign: 'center', mb: 3 }}>
         <Button
           sx={{ fontSize: '1rem', mb: 1 }}
           variant='contained'

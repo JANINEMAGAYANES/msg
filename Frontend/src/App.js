@@ -24,7 +24,7 @@ const App = () => {
                             MyApp
                         </Typography>
                         {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
-                        <Button color="inherit" component={Link} to="/">Home</Button>
+                         {/* <Button color="inherit" component={Link} to="/">Home</Button>  */}
                     </Toolbar>
                 </AppBar>
 
