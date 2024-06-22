@@ -27,6 +27,10 @@ def get_prescription_by_patient_id(c, id):
     c.execute("SELECT id FROM Prescription WHERE pat_id = ?", (id,))
     return c.fetchall()
 
+# get all prescription with specific drug
+def get_prescriptions_by_drug_id(c, id):
+    c.execute("SELECT prescription_id FROM Drug_in_Prescription WHERE drug_id = ?", (id,))
+    return c.fetchall()
 # get drug by id
 def get_drug_name_by_id(c, id):
     c.execute("SELECT name FROM Drugs WHERE id = ?", (id,))
