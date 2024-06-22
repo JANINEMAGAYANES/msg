@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = ''; 
+const API_URL = 'http://localhost:8000/drug_overview/1'; 
 
 const fetchPrescriptions = async () => {
     try {
