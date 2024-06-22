@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+import fetchRealPrescriptions from '../helpers/fetchRealPrescriptions';
 
 const slots = [
   'Rezept 123',
@@ -14,7 +15,7 @@ const PrescriptionList = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
-        Rezept Überblick
+        Ihre Rezepte
       </Typography>
       {slots.map((slot, index) => (
         <Link key={index} to="/ubernehmen" style={{ textDecoration: 'none' }}>

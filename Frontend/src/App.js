@@ -28,6 +28,17 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 //     return { medications };
 // }
 
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#5657ff', // Your custom primary color
+      },
+      secondary: {
+        main: '#dc004e', // Your custom secondary color
+      },
+    },
+  });
+
 export default function App() {
   // const { medications } = useLoaderData();
   const [open, setOpen] = useState(false);
@@ -43,6 +54,7 @@ export default function App() {
     setOpen(false);
   };
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <Router>
         <AppBar position='static'>
@@ -56,7 +68,7 @@ export default function App() {
               sx={{ flexGrow: 1, textDecoration: 'none', color: 'inherit' }} // Add styles to remove underline and inherit color
           
         >
-              MyApp
+              MediSync
             </Typography>
             {/* <Button color="inherit" component={Link} to="/scan">Scan</Button> */}
             <IconButton color='inherit' component={Link} to='/doctor'>
@@ -85,5 +97,6 @@ export default function App() {
         message="Es ist die zeit um die Ibuprofen nehmen"
         avatarSrc="https://randomuser.me/api/portraits/men/1.jpg" />
     </div>
+    </ThemeProvider>
   );
 }
