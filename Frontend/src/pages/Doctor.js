@@ -10,12 +10,32 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { Link } from 'react-router-dom';
 import fetchPrescriptions from '../helpers/fetchPrescription';
 
 const initialRezept = [
-  { rezept: '1543', medicine: 'Ibuprofen', patientId: 1, drugId: 2, annotation: 'Kopfschmerzen', validUntil: '14/02/2025', createdAt: '14/02/2024', amount: '5mg', frequency: '1 pro tag'  },
-  { rezept: '1567', medicine: 'Pennicillin', patientId: 2, drugId: 3, annotation: 'Bauchshmerzen', validUntil: '14/02/2025', createdAt: '14/02/2024', amount: '5mg', frequency: '2 pro tag'  },
-
+  {
+    rezept: '1543',
+    medicine: 'Ibuprofen',
+    patientId: 1,
+    drugId: 2,
+    annotation: 'Kopfschmerzen',
+    validUntil: '14/02/2025',
+    createdAt: '14/02/2024',
+    amount: '5mg',
+    frequency: '1 pro tag',
+  },
+  {
+    rezept: '1567',
+    medicine: 'Pennicillin',
+    patientId: 2,
+    drugId: 3,
+    annotation: 'Bauchshmerzen',
+    validUntil: '14/02/2025',
+    createdAt: '14/02/2024',
+    amount: '5mg',
+    frequency: '2 pro tag',
+  },
 ];
 
 const Doctor = () => {
@@ -30,7 +50,6 @@ const Doctor = () => {
   const [checkedItems, setCheckedItems] = useState({});
   const [prescriptions, setPrescriptions] = useState([]);
 
-  
   const handleRezeptChange = (index, newValue) => {
     const updatedRezepts = [...rezeptSlots];
     updatedRezepts[index].rezept = newValue;
@@ -75,62 +94,75 @@ const Doctor = () => {
     }
   };
 
-
   return (
     <Box sx={{ p: 3 }}>
-           <Typography variant='h5' gutterBottom>
-       Patient
+      <Typography variant='h5' gutterBottom>
+        Patient
       </Typography>
       <Typography variant='h4' gutterBottom>
         John Mauer
       </Typography>
       {rezeptSlots.map((slot, index) => (
-        <Paper
+        <Link
+          to="/prescription"
           key={index}
-          sx={{
-            p: 2,
-            my: 1,
-            display: 'flex',
-            alignItems: 'center',
-          }}
-          elevation={1}
+          style={{ textDecoration: 'none' }}
         >
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={checkedItems[index] || false}
-                onChange={() => handleCheckboxChange(index)}
-                color='primary'
-              />
-            }
-            label=''
-          />
-          <TextField
-            variant='standard'
-            fullWidth
-            value={slot.rezept}
-            onChange={(e) => handleRezeptChange(index, e.target.value)}
-            InputProps={{
-              style: { fontSize: '1rem' },
-              disableUnderline: true, // Remove bottom border line
+          <Paper
+            sx={{
+              p: 2,
+              my: 1,
+              display: 'flex',
+              alignItems: 'center',
             }}
-          />
-          <TextField
-            variant='standard'
-            fullWidth
-            value={slot.medicine}
-            onChange={(e) => handleRezeptChange(index, e.target.value)}
-            InputProps={{
-              style: { fontSize: '1rem' },
-              disableUnderline: true, // Remove bottom border line
-              sx: {
-                width: 'calc(100% + 20px)',
-                minWidth: '150px',
-                marginLeft: '-10px',
-              },
-            }}
-          />
-        </Paper>
+            elevation={1}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkedItems[index] || false}
+                  onChange={(e) => {
+                    e.stopPropagation(); // Prevents the link from being clicked when checkbox is clicked
+                    handleCheckboxChange(index);
+                  }}
+                  color="primary"
+                />
+              }
+              label=""
+            />
+            <TextField
+              variant="standard"
+              fullWidth
+              value={slot.rezept}
+              onChange={(e) => {
+                e.stopPropagation(); // Prevents the link from being clicked when text field is edited
+                handleRezeptChange(index, e.target.value);
+              }}
+              InputProps={{
+                style: { fontSize: '1rem' },
+                disableUnderline: true, // Remove bottom border line
+              }}
+            />
+            <TextField
+              variant="standard"
+              fullWidth
+              value={slot.medicine}
+              onChange={(e) => {
+                e.stopPropagation(); // Prevents the link from being clicked when text field is edited
+                handleRezeptChange(index, e.target.value);
+              }}
+              InputProps={{
+                style: { fontSize: '1rem' },
+                disableUnderline: true, // Remove bottom border line
+                sx: {
+                  width: 'calc(100% + 20px)',
+                  minWidth: '150px',
+                  marginLeft: '-10px',
+                },
+              }}
+            />
+          </Paper>
+        </Link>
       ))}
       <Box sx={{ mt: 3, textAlign: 'center', mb: 3 }}>
         <Button
@@ -162,7 +194,7 @@ const Doctor = () => {
             onChange={(e) => setNewMedicine(e.target.value)}
             sx={{ mb: 2 }}
           />
-              <TextField
+          <TextField
             label='Neues Annotation'
             variant='outlined'
             fullWidth
@@ -170,7 +202,7 @@ const Doctor = () => {
             onChange={(e) => setNewAnnotation(e.target.value)}
             sx={{ mb: 2 }}
           />
-                 <TextField
+          <TextField
             label='Gultig bis'
             variant='outlined'
             fullWidth
@@ -178,7 +210,7 @@ const Doctor = () => {
             onChange={(e) => setNewValidUntil(e.target.value)}
             sx={{ mb: 2 }}
           />
-             <TextField
+          <TextField
             label='Menge'
             variant='outlined'
             fullWidth
@@ -186,7 +218,7 @@ const Doctor = () => {
             onChange={(e) => setNewAmount(e.target.value)}
             sx={{ mb: 2 }}
           />
-                 <TextField
+          <TextField
             label='Häufigkeit'
             variant='outlined'
             fullWidth
