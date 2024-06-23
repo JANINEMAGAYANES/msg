@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-const API_URL = ''; 
+const API_URL = 'http://localhost:8000/drug_overview/1'; 
 
 const fetchPrescriptions = async () => {
     try {
         const response = await axios.get(API_URL);
         if (response.status === 200) {
-            console.log(response.data)
             return response.data;
         } else {
             throw new Error('Failed to fetch prescriptions');

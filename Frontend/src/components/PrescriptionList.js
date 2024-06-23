@@ -5,16 +5,16 @@ import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 
 const slots = [
-  'Rezept 123',
   'Rezept 134',
+  'Rezept 123',
   'Rezept 154',
 ];
 
-const MedicationList = () => {
+const PrescriptionList = () => {
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant='h4' gutterBottom>
-        Rezept Überblick
+        Meine Rezepte
       </Typography>
       {slots.map((slot, index) => (
         <Link key={index} to="/ubernehmen" style={{ textDecoration: 'none' }}>
@@ -36,4 +36,4 @@ const MedicationList = () => {
   );
 };
 
-export default MedicationList;
+export default PrescriptionList;
