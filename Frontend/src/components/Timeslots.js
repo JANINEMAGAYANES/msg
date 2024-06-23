@@ -14,12 +14,8 @@ import fetchPrescriptions from '../helpers/fetchPrescription';
 
 const initialTimeSlots = [
   { time: '9:00', medicine: 'Ibuprofen' },
-  { time: '10:00', medicine: 'Insulin' },
-  { time: '11:00', medicine: '' },
-  { time: '12:00', medicine: 'Ibuprofen' },
-  { time: '13:00', medicine: 'Insulin' },
-  { time: '14:00', medicine: '' },
-  { time: '15:00', medicine: '' },
+  { time: '9:00', medicine: 'Nystatin' },
+  { time: '18:00', medicine: 'Dexpanthenol' }
 ];
 
 const TimeSlots = () => {

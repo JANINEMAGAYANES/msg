@@ -63,7 +63,7 @@ def read_drug(drug_id):
         {'drug_id', 'name': 'IBUPROFEN', 'side_effects': 'Headache', 'alternatives':'Paracetamol'}
     """
     patient = Patient(1)
-    return patient.get_drug_detail()
+    return patient.get_drug_detail(drug_id)
 
 @app.get("/prescriptions/{prescription_id}")
 def read_prescription(prescription_id):

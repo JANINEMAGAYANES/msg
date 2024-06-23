@@ -15,22 +15,32 @@ import fetchPrescriptions from '../helpers/fetchPrescription';
 
 const initialRezept = [
   {
-    rezept: '1543',
-    medicine: 'Ibuprofen',
+    rezept: 'Rezept 123',
     patientId: 1,
     drugId: 2,
     annotation: 'Kopfschmerzen',
     validUntil: '14/02/2025',
-    createdAt: '14/02/2024',
+    createdAt: '23/06/2024',
     amount: '5mg',
     frequency: '1 pro tag',
   },
   {
-    rezept: '1567',
+    rezept: 'Rezept 134',
     medicine: 'Pennicillin',
     patientId: 2,
     drugId: 3,
     annotation: 'Bauchshmerzen',
+    validUntil: '14/02/2025',
+    createdAt: '14/05/2024',
+    amount: '5mg',
+    frequency: '2 pro tag',
+  },
+  {
+    rezept: ' Rezept 154',
+    medicine: 'Pennicillin',
+    patientId: 2,
+    drugId: 3,
+    annotation: 'Bauchschmerzen',
     validUntil: '14/02/2025',
     createdAt: '14/02/2024',
     amount: '5mg',
@@ -104,7 +114,7 @@ const Doctor = () => {
       </Typography>
       {rezeptSlots.map((slot, index) => (
         <Link
-          to="/prescription"
+          to="/ubernehmen"
           key={index}
           style={{ textDecoration: 'none' }}
         >
@@ -117,19 +127,6 @@ const Doctor = () => {
             }}
             elevation={1}
           >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={checkedItems[index] || false}
-                  onChange={(e) => {
-                    e.stopPropagation(); // Prevents the link from being clicked when checkbox is clicked
-                    handleCheckboxChange(index);
-                  }}
-                  color="primary"
-                />
-              }
-              label=""
-            />
             <TextField
               variant="standard"
               fullWidth
@@ -146,7 +143,7 @@ const Doctor = () => {
             <TextField
               variant="standard"
               fullWidth
-              value={slot.medicine}
+              value={slot.createdAt}
               onChange={(e) => {
                 e.stopPropagation(); // Prevents the link from being clicked when text field is edited
                 handleRezeptChange(index, e.target.value);

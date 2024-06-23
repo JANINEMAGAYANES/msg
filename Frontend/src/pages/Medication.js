@@ -4,20 +4,21 @@ import fetchPrescriptions from "../helpers/fetchPrescription";
 
 
 const Medication = () => {
-    function getItemsByCategory(dictionary, attribute) {
-        return Object.entries(dictionary).filter(([key, item]) => item.hasOwnProperty(attribute));
-    }
+    const extractProperty = (data, propertyName) => {
+        return data.map(item => item[propertyName]);
+    };
 
-    // const drugs = [];
+    const [drugs, setDrugs] = useState([]);
     const [medications, setMedications] = useState([]);
 
     useEffect(() => {
         const fetchMedicationData = async () => {
             try {
                 const data = await fetchPrescriptions();
-                const meds = getItemsByCategory(data, 'name' );
-                // const drugs = getItemsByCategory(data, 'drug_id')
+                const meds = extractProperty(data, 'name');
+                const pills = extractProperty(data, 'drug_id');
                 setMedications(meds); // Update state with fetched medications
+                setDrugs(pills);
             } catch (error) {
                 // Handle error
                 console.error('Error fetching prescriptions:', error);
@@ -28,7 +29,8 @@ const Medication = () => {
     }, [])
     return (
         <div>
-            <MedicationList/>
+            {<MedicationList medications={medications} drugIDs={drugs}/>}
+
         </div>
     );
 };

@@ -10,11 +10,11 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 
 
 
-export default function MedicineInfo({name, sideEffects, alternativeDrugs, price}) {
-    // dummy item
-    name = 'ibuprofen';
-    alternativeDrugs = ['heroin', 'cocaine']
-    sideEffects = ['vomitting', 'fraud'];
+export default function MedicineInfo(sideEffects, alternativeDrugs, price) {
+    // // dummy item
+    // name = 'ibuprofen';
+    // alternativeDrugs = ['heroin', 'cocaine']
+    // sideEffects = ['vomitting', 'fraud'];
     price = 94;
 
     // data formatting
@@ -51,30 +51,30 @@ export default function MedicineInfo({name, sideEffects, alternativeDrugs, price
 
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            <List component="nav" aria-label="main mailbox folders">
-                <ListItemButton
-                    selected={selectedIndex === 0}
-                    onClick={(event) => handleListItemClick(event, 0)}
-                >
-                    <ListItemText primary={`Name: ${name}`} />
-                </ListItemButton>
+            <List component="nav" >
+                {/*<ListItemButton*/}
+                {/*    selected={selectedIndex === 0}*/}
+                {/*    onClick={(event) => handleListItemClick(event, 0)}*/}
+                {/*>*/}
+                {/*    <ListItemText primary={`Name: ${name}`} />*/}
+                {/*</ListItemButton>*/}
 
                 <ListItemButton
                     selected={selectedIndex === 1}
-                    onClick={(event) => handleOpenEffect(event, 1)}
+                    onClick={(event) =>  handleListItemClick(event, 1)}
                 >
-                    <ListItemText primary={`Side Effects`} />
-                    {openStates.sideEffect ? <ExpandLess /> : <ExpandMore />}
+                    <ListItemText primary={`Side Effects: ${sideEffects}`} />
+                    {/*{openStates.sideEffect ? <ExpandLess /> : <ExpandMore />}*/}
                 </ListItemButton>
-                <Collapse in={openStates.sideEffect} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        {sideEffects.map((effect, index) => (
-                            <ListItemButton key={index} sx={{ pl: 4 }}>
-                                <ListItemText primary={effect}/>
-                            </ListItemButton>
-                        ))}
-                    </List>
-                </Collapse>
+                {/*<Collapse in={openStates.sideEffect} timeout="auto" unmountOnExit>*/}
+                {/*    <List component="div" disablePadding>*/}
+                {/*        {sideEffects.map((effect, index) => (*/}
+                {/*            <ListItemButton key={index} sx={{ pl: 4 }}>*/}
+                {/*                <ListItemText primary={effect}/>*/}
+                {/*            </ListItemButton>*/}
+                {/*        ))}*/}
+                {/*    </List>*/}
+                {/*</Collapse>*/}
                <ListItemButton
                         selected={selectedIndex === 2}
                         onClick={(event) => handleListItemClick(event, 2)}
@@ -83,21 +83,15 @@ export default function MedicineInfo({name, sideEffects, alternativeDrugs, price
 
                </ListItemButton>
                 <ListItemButton
-                    onClick={(event) => handleOpenDrug(event, 3)}
+                    onClick={(event) =>  handleListItemClick(event, 3)}
                     selected={selectedIndex === 3}
                 >
-                    <ListItemText primary={`Alternative Drugs`} />
-                    {openStates.alternativeDrug ? <ExpandLess /> : <ExpandMore />}
+                    {console.log(typeof(alternativeDrugs))};
+                    {console.log(typeof(sideEffects))}
+                    <ListItemText primary={`Alternative Drugs:${alternativeDrugs}`} />
+
                 </ListItemButton>
-                <Collapse in={openStates.alternativeDrug} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        {alternativeDrugs.map((drugName, index) => (
-                            <ListItemButton key={index} sx={{ pl: 4 }}>
-                                <ListItemText primary={drugName} />
-                            </ListItemButton>
-                        ))}
-                    </List>
-                </Collapse>
+
             </List>
         </Box>
     );
