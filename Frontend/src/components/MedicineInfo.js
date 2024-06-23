@@ -12,9 +12,9 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 
 export default function MedicineInfo({name, sideEffects, alternativeDrugs, price}) {
     // dummy item
-    name = 'ibuprofen';
-    alternativeDrugs = ['heroin', 'cocaine']
-    sideEffects = ['vomitting', 'fraud'];
+    name = 'Paracetamol';
+    alternativeDrugs = ['Heroin', 'Kokain']
+    sideEffects = ['Übelkeit', 'Kopfschmerzen'];
     price = 94;
 
     // data formatting
@@ -63,7 +63,7 @@ export default function MedicineInfo({name, sideEffects, alternativeDrugs, price
                     selected={selectedIndex === 1}
                     onClick={(event) => handleOpenEffect(event, 1)}
                 >
-                    <ListItemText primary={`Side Effects`} />
+                    <ListItemText primary={`Nebenwirkungen`} />
                     {openStates.sideEffect ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={openStates.sideEffect} timeout="auto" unmountOnExit>
@@ -79,14 +79,14 @@ export default function MedicineInfo({name, sideEffects, alternativeDrugs, price
                         selected={selectedIndex === 2}
                         onClick={(event) => handleListItemClick(event, 2)}
                     >
-                        <ListItemText primary={`Price: ${price} EUR`} />
+                        <ListItemText primary={`Preis: ${price} EUR`} />
 
                </ListItemButton>
                 <ListItemButton
                     onClick={(event) => handleOpenDrug(event, 3)}
                     selected={selectedIndex === 3}
                 >
-                    <ListItemText primary={`Alternative Drugs`} />
+                    <ListItemText primary={`Alternative Medikamente`} />
                     {openStates.alternativeDrug ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
                 <Collapse in={openStates.alternativeDrug} timeout="auto" unmountOnExit>
