@@ -87,7 +87,7 @@ export function MedicationList({medications, drugIDs}) {
                     name={med.name}
                     price={94}
                     sideEffects={med.side_effects}
-                    alternativeDrugs={Paracetamol}
+                    alternativeDrugs={["Paracetamol"]}
                 />
             </Collapse>
 

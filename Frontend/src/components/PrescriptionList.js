@@ -5,8 +5,8 @@ import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 
 const slots = [
-  'Rezept 123',
   'Rezept 134',
+  'Rezept 123',
   'Rezept 154',
 ];
 
