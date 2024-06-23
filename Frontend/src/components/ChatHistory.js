@@ -55,7 +55,7 @@ const ChatPage = () => {
                 <TextField
                     fullWidth
                     variant="outlined"
-                    placeholder="Type your message..."
+                    placeholder="Nachricht schreiben..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     sx={{ mr: 1 }}
@@ -65,7 +65,7 @@ const ChatPage = () => {
                     color="primary"
                     type="submit"
                 >
-                    Send
+                    Senden
                 </Button>
             </Box>
         </Box>

@@ -173,10 +173,10 @@ const Doctor = () => {
       </Box>
 
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Neuen Rezept hinzufügen</DialogTitle>
+        <DialogTitle>Neues Rezept hinzufügen</DialogTitle>
         <DialogContent>
           <TextField
-            label='Neuer Rezept'
+            label='Rezept-Nr.'
             variant='outlined'
             fullWidth
             value={newRezeptSlot}
@@ -184,7 +184,7 @@ const Doctor = () => {
             sx={{ mb: 2 }}
           />
           <TextField
-            label='Neues Medikament'
+            label='Medikamente'
             variant='outlined'
             fullWidth
             value={newMedicine}
@@ -192,7 +192,7 @@ const Doctor = () => {
             sx={{ mb: 2 }}
           />
           <TextField
-            label='Neues Annotation'
+            label='Diagnose'
             variant='outlined'
             fullWidth
             value={newAnnotation}
@@ -200,7 +200,7 @@ const Doctor = () => {
             sx={{ mb: 2 }}
           />
           <TextField
-            label='Gultig bis'
+            label='Gültig bis'
             variant='outlined'
             fullWidth
             value={newValidUntil}
@@ -216,7 +216,7 @@ const Doctor = () => {
             sx={{ mb: 2 }}
           />
           <TextField
-            label='Häufigkeit'
+            label='Einnahme'
             variant='outlined'
             fullWidth
             value={newFrequency}

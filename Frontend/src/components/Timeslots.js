@@ -158,7 +158,7 @@ const TimeSlots = () => {
           style={{ backgroundColor: '#00000' }}
           onClick={handleClickOpen}
         >
-          Medikamente Hinzufügen
+          Medikament Hinzufügen
         </Button>
       </Box>
 

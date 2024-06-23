@@ -25,25 +25,25 @@ const BottomNavigationBar = () => {
             <BottomNavigationAction 
                 component={Link} 
                 to="/" 
-                label="Home" 
+                label="Einnahmen" 
                 icon={<HomeOutlined />} 
             />
             <BottomNavigationAction 
                 component={Link} 
                 to="/medication" 
-                label="Medication" 
+                label="Medikamente" 
                 icon={<Medication />} 
             />
             <BottomNavigationAction 
                 component={Link} 
                 to="/prescription" 
-                label="Prescription" 
+                label="Rezepte" 
                 icon={<List />} 
             />
             <BottomNavigationAction 
                 component={Link} 
                 to="/contact" 
-                label="Contact" 
+                label="Chat" 
                 icon={<Message/>} 
             />
         </BottomNavigation>
