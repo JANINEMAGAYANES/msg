@@ -1,1 +1,1 @@
-DATABASE_PATH ="Backend/backend.db"
+DATABASE_PATH ="backend.db"
